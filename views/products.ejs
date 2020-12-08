@@ -17,6 +17,9 @@
         <div class="margin border fixedWidth padding greyBC">
             Price
         </div>
+        <div class="margin border fixedWidth padding greyBC">
+            Image
+        </div>
     </div>
     <% for(var i = 0; i < results.length; i++) { %>
     <div class="flex">
@@ -29,6 +32,7 @@
         <div class="margin border fixedWidth padding">
             <%- results[i].price %>
         </div>
+        <div class="margin BCimage border padding" style="background-image: url('<%- results[i].imageUrl %>');"></div>
     </div>
     <% } %>
 </body>

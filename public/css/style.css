@@ -16,3 +16,10 @@
 .greyBC{
     background-color: rgb(219, 219, 219);
 }
+.BCimage{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+}
