@@ -9,6 +9,7 @@
 }
 .border{
     border: 1.6px solid black;
+    border-radius: 5px;
 }
 .fixedWidth{
     width: 100px;
