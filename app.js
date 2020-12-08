@@ -16,6 +16,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // routes
+app.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    next();
+});
 app.use("/", router)
 
 module.exports = app;

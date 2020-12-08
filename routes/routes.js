@@ -8,10 +8,15 @@ router.get('/', function (req, res) {
 })
 
 router.get('/products', function (req, res) {
-    products.showProducts().then(function(result){
-        console.log(result)
-        res.render("products", {results: result});
-    });
+    if(req.query.json != null){
+        products.getProducts().then(function(result){
+            res.json(result);
+        });
+    }else{
+        products.getProducts().then(function(result){
+            res.render("products", {results: result});
+        });
+    }
 })
 
 module.exports = router;
