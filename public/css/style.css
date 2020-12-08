@@ -1,0 +1,18 @@
+.flex{
+    display: flex;
+}
+.margin{
+    margin: 5px;
+}
+.padding{
+    padding: 5px;
+}
+.border{
+    border: 1.6px solid black;
+}
+.fixedWidth{
+    width: 100px;
+}
+.greyBC{
+    background-color: rgb(219, 219, 219);
+}
