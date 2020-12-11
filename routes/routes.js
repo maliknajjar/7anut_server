@@ -17,8 +17,7 @@ router.get('/products', function (req, res) {
         products.getProductsByCategory(req.query.category).then((result) => {
             res.json(result);
         })
-    }
-    else{
+    }else{
         products.getProducts().then(function(result){
             res.render("products", {results: result});
         });
