@@ -4,6 +4,7 @@ var router = express.Router();
 // controllers
 let productsController = require("../controller/productsController");
 let categoriesController = require("../controller/categoriesController");
+let usersController = require("../controller/usersController");
 
 router.get("/", (req, res) => {
     res.send("this is the api page");
@@ -17,6 +18,12 @@ router.get('/products', function (req, res) {
 
 router.get('/categories', function (req, res) {
     categoriesController.getProducts().then(function(result){
+        res.json(result);
+    });
+})
+
+router.get('/users', function (req, res) {
+    usersController.getAllUsers().then(function(result){
         res.json(result);
     });
 })
