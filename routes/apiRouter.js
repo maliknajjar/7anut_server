@@ -15,12 +15,6 @@ router.get('/products', function (req, res) {
     });
 })
 
-router.get('/products/:category', function (req, res) {
-    productsController.getProductsByCategory(req.params.category).then((result) => {
-        res.json(result);
-    })
-})
-
 router.get('/categories', function (req, res) {
     categoriesController.getProducts().then(function(result){
         res.json(result);
