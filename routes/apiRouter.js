@@ -28,4 +28,12 @@ router.get('/users', function (req, res) {
     });
 })
 
+router.post('/createUser', function (req, res) {
+    usersController.createUser(req.body)
+    .then(function(result, err){
+        res.send("account was successfully created");
+    })
+    .catch(err => res.send(err));
+})
+
 module.exports = router;

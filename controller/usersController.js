@@ -9,13 +9,16 @@ let users = {
             });
         })
     },
-    createUsers: function(email, fullName, password, phoneNumber){
-        return new Promise(function(){
-            db.query(`INSERT INTO \`7anut\`.\`users\` (\`email\`, \`fullName\`, \`password\`, \`phoneNumber\`) VALUES ('${email}', '${fullName}', '${password}', '${phoneNumber}')`, (error, result) => {
-                if (error) throw error;
+    createUser: function(object){
+        return new Promise(function(resolve, reject){
+            db.query(`INSERT INTO \`7anut\`.\`users\` (\`email\`, \`fullName\`, \`password\`, \`phoneNumber\`) VALUES ('${object.email}', '${object.fullName}', '${object.password}', '${object.phoneNumber}')`, (error, result) => {
+                if (error) reject(error.code);
                 resolve(result);
             })
         })
+    },
+    validateRegisterInformation: function(object){
+
     }
 }
 
