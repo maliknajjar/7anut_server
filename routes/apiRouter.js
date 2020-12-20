@@ -33,7 +33,7 @@ router.post('/createUser', function (req, res) {
     .then(function(result, err){
         res.send("account was successfully created");
     })
-    .catch(err => res.send(err));
+    .catch(err => res.send(err.code));
 })
 
 module.exports = router;
