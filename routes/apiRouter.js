@@ -43,8 +43,8 @@ router.post('/createUser', function (req, res) {
     .catch(err => res.send(err));
 })
 
-router.get('/loginUser', function (req, res) {
-    usersController.loginUser().then(function(result){
+router.post('/loginUser', function (req, res) {
+    usersController.loginUser(req.body).then(function(result){
         res.send(result);
     }).catch(function(error){
         res.send(error);

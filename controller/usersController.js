@@ -20,10 +20,20 @@ let users = {
     },
     loginUser: function(object){
         return new Promise(function(resolve, reject){
-            db.query(`SELECT * FROM users WHERE email = "${db.escape(object.email)}";`, (error, result) => {
-                if (error) reject(error.code);
-                if(result.password == object.password) resolve("logged in successfully");
-                else resolve(result);
+            db.query(`SELECT * FROM users WHERE email = ${db.escape(object.email)}`, (error, result) => {
+                if (error){
+                    reject(error.code);
+                    return;
+                }
+                if(!result.email){
+                    reject("email does not exist")
+                    return;
+                }
+                if(result.password != object.password){
+                    reject("password is wrong");
+                    return;
+                }
+                resolve(result);
             })
         })
     },
