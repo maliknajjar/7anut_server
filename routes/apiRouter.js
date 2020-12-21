@@ -29,11 +29,13 @@ router.get('/users', function (req, res) {
 })
 
 router.post('/createUser', function (req, res) {
+    // filtering and validating before submiting to the database
     let object = usersController.validateAndFilterRegister(req.body);
     if(object.error){
         res.send(object.error);
         return;
     }
+    // submiting data to the database (be carefull)
     usersController.createUser(object)
     .then(function(result, err){
         res.send("account was successfully created");

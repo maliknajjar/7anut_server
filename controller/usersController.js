@@ -12,7 +12,7 @@ let users = {
     },
     createUser: function(object){
         return new Promise(function(resolve, reject){
-            db.query(`INSERT INTO \`7anut\`.\`users\` (\`email\`, \`fullName\`, \`password\`, \`phoneNumber\`) VALUES ('${object.email}', '${object.fullName}', '${object.password}', '${object.phoneNumber}')`, (error, result) => {
+            db.query(`INSERT INTO \`7anut\`.\`users\` (\`email\`, \`fullName\`, \`password\`, \`phoneNumber\`) VALUES ('${db.escape(object.email)}', '${db.escape(object.fullName)}', '${db.escape(object.password)}', '${db.escape(object.phoneNumber)}')`, (error, result) => {
                 if (error) reject(error.code);
                 resolve(result);
             })
@@ -31,6 +31,7 @@ let users = {
             object.error = "phone number is not valid";
             return object;
         }
+        // return object if everything is fine
         return object;
     }
 }
