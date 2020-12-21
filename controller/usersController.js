@@ -18,7 +18,19 @@ let users = {
             })
         })
     },
-    // validating and filtering informations functions
+    loginUser: function(object){
+        return new Promise(function(resolve, reject){
+            db.query(`SELECT * FROM users WHERE email = "${db.escape(object.email)}";`, (error, result) => {
+                if (error) reject(error.code);
+                if(result.password == object.password) resolve(true);
+            })
+        })
+    },
+
+    /////////////////////////////////////////////////////
+    // validating and filtering informations functions //
+    /////////////////////////////////////////////////////
+
     validateAndFilterRegister: function(object){
         // validating the email
         if(!validator.validate(object.email)){

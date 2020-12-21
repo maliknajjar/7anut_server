@@ -43,4 +43,12 @@ router.post('/createUser', function (req, res) {
     .catch(err => res.send(err));
 })
 
+router.get('/loginUser', function (req, res) {
+    usersController.loginUser().then(function(result){
+        if(result == true) res.send("loged in successfully");
+    }).catch(function(error){
+        res.send(error);
+    });
+})
+
 module.exports = router;
