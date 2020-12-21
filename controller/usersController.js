@@ -22,7 +22,8 @@ let users = {
         return new Promise(function(resolve, reject){
             db.query(`SELECT * FROM users WHERE email = "${db.escape(object.email)}";`, (error, result) => {
                 if (error) reject(error.code);
-                if(result.password == object.password) resolve(true);
+                if(result.password == object.password) resolve("logged in successfully");
+                else resolve(result);
             })
         })
     },

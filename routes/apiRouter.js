@@ -45,7 +45,7 @@ router.post('/createUser', function (req, res) {
 
 router.get('/loginUser', function (req, res) {
     usersController.loginUser().then(function(result){
-        if(result == true) res.send("loged in successfully");
+        res.send(result);
     }).catch(function(error){
         res.send(error);
     });
