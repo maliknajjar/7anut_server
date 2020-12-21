@@ -29,11 +29,16 @@ router.get('/users', function (req, res) {
 })
 
 router.post('/createUser', function (req, res) {
-    usersController.createUser(req.body)
+    let object = usersController.validateAndFilterRegister(req.body);
+    if(object.error){
+        res.send(object.error);
+        return;
+    }
+    usersController.createUser(object)
     .then(function(result, err){
         res.send("account was successfully created");
     })
-    .catch(err => res.send(err.code));
+    .catch(err => res.send(err));
 })
 
 module.exports = router;
