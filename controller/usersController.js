@@ -25,15 +25,33 @@ let users = {
                     reject(error.code);
                     return;
                 }
-                if(!result.email){
+                if(!result[0]){
                     reject("email does not exist")
                     return;
                 }
-                if(result.password != object.password){
+                if(result[0].password != object.password){
                     reject("password is wrong");
                     return;
                 }
-                resolve(result);
+                resolve("successfully loged in");
+            })
+        })
+    },
+    forgotPassword: function(object){
+        return new Promise(function(resolve, reject){
+            db.query(`SELECT * FROM users WHERE email = ${db.escape(object.email)}`, (error, result) => {
+                if (error){
+                    reject(error.code);
+                    return;
+                }
+                if(!result[0]){
+                    reject("email does not exist")
+                    return;
+                }
+                /////////////////////////////////////
+                // send password to the email here //
+                /////////////////////////////////////
+                resolve("password was successfully sent");
             })
         })
     },

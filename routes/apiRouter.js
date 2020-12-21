@@ -51,4 +51,12 @@ router.post('/loginUser', function (req, res) {
     });
 })
 
+router.post('/forgotPassword', function (req, res) {
+    usersController.forgotPassword(req.body).then(function(result){
+        res.send(result);
+    }).catch(function(error){
+        res.send(error);
+    });
+})
+
 module.exports = router;
