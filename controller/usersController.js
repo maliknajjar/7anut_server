@@ -51,7 +51,7 @@ let users = {
                 /////////////////////////////////////
                 // send password to the email here //
                 /////////////////////////////////////
-                resolve("password was successfully sent");
+                resolve("check your email for password");
             })
         })
     },
