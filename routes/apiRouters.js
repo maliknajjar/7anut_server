@@ -2,25 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 // controllers
-let productsController = require("../controllers/productsController");
-let categoriesController = require("../controllers/categoriesController");
-let usersController = require("../controllers/usersController");
+let productsController = require("../controllers/productsControllers");
+let categoriesController = require("../controllers/categoriesControllers");
+let usersController = require("../controllers/usersControllers");
 
-router.get("/", (req, res) => {
-    res.send("this is the api page");
-})
-
-router.get('/products', function (req, res) {
-    productsController.getProducts().then((result) => {
-        res.json(result);
-    });
-})
-
-router.get('/categories', function (req, res) {
-    categoriesController.getProducts().then(function(result){
-        res.json(result);
-    });
-})
+router.get("/", (req, res) => { res.send("this is the api page") })
+router.get('/products', productsController.getProducts)
+router.get('/categories', categoriesController.getCategories)
 
 router.get('/users', function (req, res) {
     usersController.getAllUsers().then(function(result){

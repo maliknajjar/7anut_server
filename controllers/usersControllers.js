@@ -2,7 +2,7 @@ let db = require("../db");
 var validator = require("email-validator");
 const bcrypt = require('bcrypt');
 
-let users = {
+let controllers = {
     getAllUsers: function(){
         return new Promise(function(resolve, reject){
             db.query('SELECT * FROM users', function (error, result) {
@@ -84,4 +84,4 @@ let users = {
     }
 }
 
-module.exports = users;
+module.exports = controllers;

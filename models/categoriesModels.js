@@ -1,7 +1,7 @@
 let db = require("../db");
 
-let categories = {
-    getProducts: function(){
+let models = {
+    getCategories: function(){
         return new Promise(function(resolve, reject){
             db.query('SELECT * FROM categories', function (error, result) {
                 if (error) throw error;
@@ -11,4 +11,4 @@ let categories = {
     },
 }
 
-module.exports = categories;
+module.exports = models;
