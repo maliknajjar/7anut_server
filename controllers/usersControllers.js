@@ -1,6 +1,6 @@
 let usersModels = require("../models/usersModels")
 
-let controllers = {
+module.exports = {
     getAllUsers: (req, res) => {
         usersModels.getAllUsers()
         .then((users) => {
@@ -13,6 +13,10 @@ let controllers = {
             res.json(result);
         })
     },
+    signIn: (req, res) => {
+        usersModels.signIn(req.body)
+        .then((result) => {
+            res.json(result);
+        })
+    }
 }
-
-module.exports = controllers;
