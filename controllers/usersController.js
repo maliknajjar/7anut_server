@@ -1,5 +1,6 @@
 let db = require("../db");
 var validator = require("email-validator");
+const bcrypt = require('bcrypt');
 
 let users = {
     getAllUsers: function(){
@@ -11,29 +12,35 @@ let users = {
         })
     },
     createUser: function(object){
+        // Store hash in your password DB.
         return new Promise(function(resolve, reject){
-            db.query(`INSERT INTO \`7anut\`.\`users\` (\`email\`, \`fullName\`, \`password\`, \`phoneNumber\`) VALUES ('${db.escape(object.email)}', '${db.escape(object.fullName)}', '${db.escape(object.password)}', '${db.escape(object.phoneNumber)}')`, (error, result) => {
-                if (error) reject(error.code);
-                resolve(result);
-            })
+            bcrypt.hash(object.password, 10).then(function(hash) {
+                db.query(`INSERT INTO 7anut.users (email, fullName, password, phoneNumber) VALUES (${db.escape(object.email)}, ${db.escape(object.fullName)}, ${db.escape(hash)}, ${db.escape(object.phoneNumber)})`, (error, result) => {
+                    if (error) reject(error.code);
+                    resolve(result);
+                })
+            });
         })
     },
     loginUser: function(object){
         return new Promise(function(resolve, reject){
             db.query(`SELECT * FROM users WHERE email = ${db.escape(object.email)}`, (error, result) => {
-                if (error){
-                    reject(error.code);
-                    return;
-                }
                 if(!result[0]){
                     reject("email does not exist")
                     return;
                 }
-                if(result[0].password != object.password){
-                    reject("password is wrong");
-                    return;
-                }
-                resolve("successfully loged in");
+                bcrypt.compare(object.password, result[0].password).then(function(hashResult) {
+                    // result == true
+                    if (error){
+                        reject(error.code);
+                        return;
+                    }
+                    if(!hashResult){ // making sure the password equals the hashed password
+                        reject("password is wrong");
+                        return;
+                    }
+                    resolve("successfully loged in");
+                });
             })
         })
     },

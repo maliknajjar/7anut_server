@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 // controllers
-let productsController = require("../controller/productsController");
-let categoriesController = require("../controller/categoriesController");
-let usersController = require("../controller/usersController");
+let productsController = require("../controllers/productsController");
+let categoriesController = require("../controllers/categoriesController");
+let usersController = require("../controllers/usersController");
 
 router.get("/", (req, res) => {
     res.send("this is the api page");
