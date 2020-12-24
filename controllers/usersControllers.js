@@ -9,6 +9,9 @@ let controllers = {
     },
     createUser: (req, res) => {
         usersModels.createUser(req.body)
+        .then((result) => {
+            res.json(result);
+        })
     },
 }
 
