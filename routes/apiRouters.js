@@ -11,7 +11,8 @@ router.get("/", (req, res) => { res.send("this is the api page") })
 router.get('/products', productsController.getProducts)
 router.get('/categories', categoriesController.getCategories)
 router.get('/users', usersController.getAllUsers)
-router.post('/createUser', usersController.createUser)
-router.post('/signIn', usersController.signIn)
+router.post('/createuser', usersController.createUser)
+router.post('/signin', usersController.signIn)
+router.post('/forgetpassword', usersController.forgerPassword)
 
 module.exports = router;

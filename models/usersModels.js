@@ -52,5 +52,20 @@ module.exports = {
                 })
             });
         })
+    },
+    forgerPassword: (object) => {
+        return new Promise(function(resolve, reject){
+            db.query(`SELECT * FROM users WHERE email = '${object.email}'`, function (error, result) {
+                if (error){
+                    resolve({"error": error});
+                    return;
+                }
+                if(result[0] == null){
+                    resolve({"error": "email does not exist"})
+                    return;
+                }
+                resolve({"message": "check your email for password"})
+            });
+        })
     }
 }

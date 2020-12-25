@@ -18,5 +18,11 @@ module.exports = {
         .then((result) => {
             res.json(result);
         })
+    },
+    forgerPassword: (req, res) => {
+        usersModels.forgerPassword(req.body)
+        .then((result) => {
+            res.json(result)
+        })
     }
 }
