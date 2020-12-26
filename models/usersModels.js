@@ -53,7 +53,7 @@ module.exports = {
             });
         })
     },
-    forgerPassword: (object) => {
+    forgetPassword: (object) => {
         return new Promise(function(resolve, reject){
             db.query(`SELECT * FROM users WHERE email = '${object.email}'`, function (error, result) {
                 if (error){
@@ -64,6 +64,9 @@ module.exports = {
                     resolve({"error": "email does not exist"})
                     return;
                 }
+                /////////////////////
+                // send email here //
+                /////////////////////
                 resolve({"message": "check your email for password"})
             });
         })

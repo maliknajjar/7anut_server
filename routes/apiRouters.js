@@ -13,6 +13,6 @@ router.get('/categories', categoriesController.getCategories)
 router.get('/users', usersController.getAllUsers)
 router.post('/createuser', usersController.createUser)
 router.post('/signin', usersController.signIn)
-router.post('/forgetpassword', usersController.forgerPassword)
+router.post('/forgetpassword', usersController.forgetPassword)
 
 module.exports = router;

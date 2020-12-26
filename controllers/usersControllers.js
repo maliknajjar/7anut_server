@@ -19,8 +19,8 @@ module.exports = {
             res.json(result);
         })
     },
-    forgerPassword: (req, res) => {
-        usersModels.forgerPassword(req.body)
+    forgetPassword: (req, res) => {
+        usersModels.forgetPassword(req.body)
         .then((result) => {
             res.json(result)
         })
