@@ -3,7 +3,7 @@ let validator = require("email-validator");
 let functions = require("./functions/functions")
 let bcrypt = require('bcrypt');
 
-module.exports = {
+let usersModels = {
     getAllUsers: () => {
         return new Promise(function(resolve, reject){
             db.query('SELECT * FROM users', function (error, result) {
@@ -14,6 +14,11 @@ module.exports = {
     },
     createUser: (object) => {
         return new Promise(function(resolve, reject){
+            //checking if all fields are there
+            if(object.email == null || object.fullName == null || object.phoneNumber == null || object.password == null){
+                resolve({"error": "fill all the fields"});
+                return;
+            }
             // validating the email
             if(!validator.validate(object.email)){
                 resolve({"error": "email is not valid"});
@@ -24,16 +29,25 @@ module.exports = {
                 resolve({"error": "phone number is not valid"});
                 return;
             }
+            // hasing the password
             bcrypt.hash(object.password, 10).then(function(hash) {
                 db.query(`INSERT INTO 7anut.users (email, fullName, password, phoneNumber) VALUES (${db.escape(object.email)}, ${db.escape(object.fullName)}, ${db.escape(hash)}, ${db.escape(object.phoneNumber)})`, (error, result) => {
                     if (error) resolve({"error": error.code});
-                    resolve({"message": "account created successfully"});
+                    functions.userSessionGiver(object.email).then((theSession) =>{
+                        resolve({"message": "account created successfully", "session": theSession});
+                    })
                 })
             });
         })
     },
     signIn: (object) => {
         return new Promise(function(resolve, reject){
+            //checking if all fields are there
+            if(object.email == null || object.password == null){
+                resolve({"error": "fill all the fields"});
+                return;
+            }
+            // looking for the requested sign in
             db.query(`SELECT * FROM users WHERE email = '${object.email}'`, function (error, result) {
                 if (error){
                     resolve({"error": error});
@@ -48,7 +62,9 @@ module.exports = {
                         resolve({"error": "password is wrong"})
                         return;
                     }
-                    resolve({"message": "logged in successfully"})
+                    functions.userSessionGiver(result[0].email).then((theSession) =>{
+                        resolve({"message": "logged in successfully", "session": theSession});
+                    })
                 })
             });
         })
@@ -70,5 +86,7 @@ module.exports = {
                 resolve({"message": "check your email for password"})
             });
         })
-    }
+    },
 }
+
+module.exports = usersModels;
