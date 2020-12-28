@@ -24,5 +24,11 @@ module.exports = {
         .then((result) => {
             res.json(result)
         })
+    },
+    checkUserSession: (req, res) => {
+        usersModels.checkUserSession(req.body)
+        .then((result) => {
+            res.json(result)
+        })
     }
 }

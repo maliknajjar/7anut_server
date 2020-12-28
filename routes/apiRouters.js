@@ -14,5 +14,6 @@ router.get('/users', usersController.getAllUsers)
 router.post('/createuser', usersController.createUser)
 router.post('/signin', usersController.signIn)
 router.post('/forgetpassword', usersController.forgetPassword)
+router.post('/checkUserSession', usersController.checkUserSession)
 
 module.exports = router;
