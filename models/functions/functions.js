@@ -10,7 +10,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             let sessionID = generator.generate({length: 15, numbers: true, symbols: true, uppercase: true, lowercase: true})
             let sessionAgeInHours = 1; // define the maximum age of session's validity
-            let expireDate = moment().utc().add(sessionAgeInHours, "hours").format('YMDH');
+            let expireDate = moment().utc().add(sessionAgeInHours, "hours").format('YYYYMMDDHH');
             db.query(`SELECT * FROM sessions WHERE email = '${email}'`, function (error, result) {
                 if(result[0] != null){
                     db.query(`UPDATE 7anut.sessions SET ID = '${sessionID}', expire_date = '${expireDate}' WHERE (email = '${email}')`, (error, result) => {
@@ -41,7 +41,7 @@ module.exports = {
                     resolve({"error": "this is not your session"})
                     return;
                 }
-                if(Number(result[0].expire_date) < Number(moment().utc().format('YMDH'))){
+                if(Number(result[0].expire_date) < Number(moment().utc().format('YYYYMMDDHH'))){
                     resolve({"error": "session has expired"})
                     return;
                 }

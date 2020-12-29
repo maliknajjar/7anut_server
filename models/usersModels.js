@@ -84,9 +84,9 @@ let usersModels = {
                     resolve({"error": "email does not exist"})
                     return;
                 }
-                /////////////////////
-                // send email here //
-                /////////////////////
+                ////////////////////////////////////////////////////////
+                // send email and change password in the databse here //
+                ////////////////////////////////////////////////////////
                 resolve({"message": "check your email for password"})
             });
         })
