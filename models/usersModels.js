@@ -96,29 +96,32 @@ let usersModels = {
 
     editProfile: (object) => {
         return new Promise(function(resolve, reject){
-            if(object.type == "email"){
-                resolve({"message": `${object.type} recieved successfully`})
-                return
-            }
-            else if(object.type == "name"){
-                resolve({"message": `${object.type} recieved successfully`})
-                return
+            // changing the name
+            if(object.type == "name"){
+                db.query(`UPDATE 7anut.users SET fullName = '${object["inputs"]["new name"]}' WHERE (email = '${object.email}');`, function (error, result) {
+                    if (error){
+                        resolve({"error": error});
+                        return;
+                    }
+                    resolve({"message": `${object.type} changed successfully`})
+                });
             }
             else if(object.type == "phone number"){
-                resolve({"message": `${object.type} recieved successfully`})
-                return
+                db.query(`UPDATE 7anut.users SET phoneNumber = '${object["inputs"]["new phone Number"]}' WHERE (email = '${object.email}');`, function (error, result) {
+                    if (error){
+                        resolve({"error": error});
+                        return;
+                    }
+                    resolve({"message": `${object.type} changed successfully`})
+                });
             }
             else if(object.type == "password"){
                 resolve({"message": `${object.type} recieved successfully`})
+            }
+            else{
+                resolve({"error": "didnt recieve the correct value"})
                 return
             }
-            db.query(`SELECT * FROM users WHERE email = '${object.email}'`, function (error, result) {
-                if (error){
-                    resolve({"error": error});
-                    return;
-                }
-                resolve({"message": `${object.type} changed successfully`})
-            });
         })
     }
 }
