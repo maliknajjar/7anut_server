@@ -25,8 +25,18 @@ module.exports = {
             res.json(result)
         })
     },
-    checkUserSession: (req, res) => {
+    checkUserSession: (req, res, next) => {
         usersModels.checkUserSession(req.body)
+        .then((result) => {
+            if(result.error == null){
+                next()
+                return
+            }
+            res.json(result)
+        })
+    },
+    editProfile: (req, res) => {
+        usersModels.editProfile(req.body)
         .then((result) => {
             res.json(result)
         })

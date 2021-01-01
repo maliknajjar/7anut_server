@@ -91,7 +91,36 @@ let usersModels = {
             });
         })
     },
+    
     checkUserSession: functions.checkUserSession,
+
+    editProfile: (object) => {
+        return new Promise(function(resolve, reject){
+            if(object.type == "email"){
+                resolve({"message": `${object.type} recieved successfully`})
+                return
+            }
+            else if(object.type == "name"){
+                resolve({"message": `${object.type} recieved successfully`})
+                return
+            }
+            else if(object.type == "phone number"){
+                resolve({"message": `${object.type} recieved successfully`})
+                return
+            }
+            else if(object.type == "password"){
+                resolve({"message": `${object.type} recieved successfully`})
+                return
+            }
+            db.query(`SELECT * FROM users WHERE email = '${object.email}'`, function (error, result) {
+                if (error){
+                    resolve({"error": error});
+                    return;
+                }
+                resolve({"message": `${object.type} changed successfully`})
+            });
+        })
+    }
 }
 
 module.exports = usersModels;

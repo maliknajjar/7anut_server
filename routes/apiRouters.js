@@ -6,7 +6,8 @@ let productsController = require("../controllers/productsControllers");
 let categoriesController = require("../controllers/categoriesControllers");
 let usersController = require("../controllers/usersControllers");
 
-// routes
+
+// routes that does not need Authorization
 router.get("/", (req, res) => { res.send("this is the api page")})
 router.get('/products', productsController.getProducts)
 router.get('/categories', categoriesController.getCategories)
@@ -14,6 +15,12 @@ router.get('/users', usersController.getAllUsers)
 router.post('/createuser', usersController.createUser)
 router.post('/signin', usersController.signIn)
 router.post('/forgetpassword', usersController.forgetPassword)
-router.post('/checkUserSession', usersController.checkUserSession)
+
+//check for session Authorization
+router.use((req, res, next) => { usersController.checkUserSession(req, res, next); })
+
+// routes that needs session Authorization
+router.post('/checkUserSession', (req, res) => { res.json({"message": "Authorization is correct"})})
+router.post('/editProfile', usersController.editProfile)
 
 module.exports = router;
