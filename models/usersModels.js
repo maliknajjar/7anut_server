@@ -97,13 +97,13 @@ let usersModels = {
     editProfile: (object) => {
         return new Promise(function(resolve, reject){
             // changing the name
-            if(object.type == "name"){
+            if(object.type == "full name"){
                 db.query(`UPDATE 7anut.users SET fullName = '${object["inputs"]["new name"]}' WHERE (email = '${object.email}');`, function (error, result) {
                     if (error){
                         resolve({"error": error});
                         return;
                     }
-                    resolve({"message": `${object.type} changed successfully`})
+                    resolve({"message": `${object.type} changed successfully`, "value": object["inputs"]["new name"]})
                 });
             }
             else if(object.type == "phone number"){
@@ -112,7 +112,7 @@ let usersModels = {
                         resolve({"error": error});
                         return;
                     }
-                    resolve({"message": `${object.type} changed successfully`})
+                    resolve({"message": `${object.type} changed successfully`, "value": object["inputs"]["new phone Number"]})
                 });
             }
             else if(object.type == "password"){
