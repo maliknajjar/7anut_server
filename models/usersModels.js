@@ -116,10 +116,30 @@ let usersModels = {
                 });
             }
             else if(object.type == "password"){
-                resolve({"message": `${object.type} recieved successfully`})
+                db.query(`SELECT * FROM users WHERE email = '${object.email}'`, function (error, result) {
+                    if (error){
+                        resolve({"error": error});
+                        return;
+                    }
+                    bcrypt.compare(object["inputs"]["old password"], result[0].password).then((boolean) => {
+                        if(!boolean){
+                            resolve({"error": "password does not match"});
+                            return;
+                        }
+                        bcrypt.hash(object["inputs"]["new password"], 10).then((hash) => {
+                            db.query(`UPDATE 7anut.users SET password = '${hash}' WHERE (email = '${object.email}');`, function (error, result) {
+                                if (error){
+                                    resolve({"error": error});
+                                    return;
+                                }
+                                resolve({"message": `${object.type} changed successfully`})
+                            });
+                        })
+                    })
+                });
             }
             else{
-                resolve({"error": "didnt recieve the correct value"})
+                resolve({"error": "didnt recieve the correct type"})
                 return
             }
         })
