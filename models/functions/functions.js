@@ -45,7 +45,7 @@ module.exports = {
                     resolve({"error": "session has expired"})
                     return;
                 }
-                resolve({"message": "session is valid"})
+                resolve({"message": "session is very valid"})
             });
         })
     }
