@@ -6,7 +6,6 @@ let productsController = require("../controllers/productsControllers");
 let categoriesController = require("../controllers/categoriesControllers");
 let usersController = require("../controllers/usersControllers");
 
-
 // routes that does not need Authorization
 router.get("/", (req, res) => { res.send("this is the api page")})
 router.get('/products', productsController.getProducts)
