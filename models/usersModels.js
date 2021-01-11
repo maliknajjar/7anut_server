@@ -2,7 +2,6 @@ let db = require("../db");
 let validator = require("email-validator");
 let functions = require("./functions/functions")
 let bcrypt = require('bcrypt');
-let moment = require('moment');
 
 let usersModels = {
     getAllUsers: () => {
