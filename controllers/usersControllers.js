@@ -32,7 +32,8 @@ module.exports = {
                 next()
                 return
             }
-            res.json(result)
+            // res.json(result)
+            next()
         })
     },
     editProfile: (req, res) => {

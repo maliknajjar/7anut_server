@@ -2,6 +2,9 @@ let db = require("../../db");
 let generator = require('generate-password');
 let moment = require('moment');
 
+// define the maximum age of session's validity
+let sessionAgeInHours = 1; 
+
 module.exports = {
     isNumber: (number) => {
         return /^\d+$/.test(number);
@@ -9,7 +12,6 @@ module.exports = {
     userSessionGiver: (email) => {
         return new Promise((resolve, reject) => {
             let sessionID = generator.generate({length: 15, numbers: true, symbols: true, uppercase: true, lowercase: true})
-            let sessionAgeInHours = 1; // define the maximum age of session's validity
             let expireDate = moment().utc().add(sessionAgeInHours, "hours").format('YYYYMMDDHH');
             db.query(`SELECT * FROM sessions WHERE email = '${email}'`, function (error, result) {
                 if(result[0] != null){
@@ -45,7 +47,15 @@ module.exports = {
                     resolve({"error": "session has expired"})
                     return;
                 }
-                resolve({"message": "session is very valid"})
+                // resetting the time to count from the beggining
+                let expireDate = moment().utc().add(sessionAgeInHours, "hours").format('YYYYMMDDHH');
+                db.query(`UPDATE 7anut.sessions SET expire_date = '${expireDate}' WHERE (ID = '${object.sessionID}')`, function (theerror, result) {
+                    if (theerror){
+                        resolve({"error": theerror});
+                        return;
+                    }
+                    resolve({"message": "session is very valid"})
+                })
             });
         })
     }

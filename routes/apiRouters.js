@@ -16,7 +16,7 @@ router.post('/signin', usersController.signIn)
 router.post('/forgetpassword', usersController.forgetPassword)
 
 //check for session Authorization
-router.use((req, res, next) => { usersController.checkUserSession(req, res, next); })
+router.use(usersController.checkUserSession)
 
 // routes that needs session Authorization
 router.post('/checkUserSession', (req, res) => { res.json({"message": "Authorization is correct"})})
