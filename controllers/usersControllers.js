@@ -29,11 +29,11 @@ module.exports = {
         usersModels.checkUserSession(req.body)
         .then((result) => {
             if(result.error == null){
+                // res.json(result)
                 next()
                 return
             }
-            // res.json(result)
-            next()
+            res.json(result)
         })
     },
     editProfile: (req, res) => {

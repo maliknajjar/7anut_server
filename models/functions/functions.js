@@ -12,7 +12,7 @@ module.exports = {
     userSessionGiver: (email) => {
         return new Promise((resolve, reject) => {
             let sessionID = generator.generate({length: 15, numbers: true, symbols: true, uppercase: true, lowercase: true})
-            let expireDate = moment().utc().add(sessionAgeInHours, "hours").format('YYYYMMDDHH');
+            let expireDate = moment().utc(1).add(sessionAgeInHours, "hours").format('YYYYMMDDHH');
             db.query(`SELECT * FROM sessions WHERE email = '${email}'`, function (error, result) {
                 if(result[0] != null){
                     db.query(`UPDATE 7anut.sessions SET ID = '${sessionID}', expire_date = '${expireDate}' WHERE (email = '${email}')`, (error, result) => {
@@ -43,12 +43,12 @@ module.exports = {
                     resolve({"error": "this is not your session"})
                     return;
                 }
-                if(Number(result[0].expire_date) < Number(moment().utc().format('YYYYMMDDHH'))){
+                if(Number(result[0].expire_date) < Number(moment().utc(1).format('YYYYMMDDHH'))){
                     resolve({"error": "session has expired"})
                     return;
                 }
                 // resetting the time to count from the beggining
-                let expireDate = moment().utc().add(sessionAgeInHours, "hours").format('YYYYMMDDHH');
+                let expireDate = moment().utc(1).add(sessionAgeInHours, "hours").format('YYYYMMDDHH');
                 db.query(`UPDATE 7anut.sessions SET expire_date = '${expireDate}' WHERE (ID = '${object.sessionID}')`, function (theerror, result) {
                     if (theerror){
                         resolve({"error": theerror});
