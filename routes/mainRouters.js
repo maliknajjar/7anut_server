@@ -1,17 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
+// controllers
+let productsController = require("../controllers/productsControllers")
+
 //routes
-let apiRouter = require("./apiRouters");
-let productsRouter = require("./productsRouters");
-let categoriesRouter = require("./categoriesRouters");
-
-router.get('/', function (req, res) {
-    res.render("index");
-})
-
-router.use('/api', apiRouter);
-router.use('/products', productsRouter);
-router.use('/categories', categoriesRouter);
+router.get('/', function (req, res) {res.render("index");})
+router.get("/products", productsController.getProducts)
 
 module.exports = router;

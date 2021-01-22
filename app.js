@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require('body-parser');
 const router = require("./routes/mainRouters")
+let apiRouter = require("./routes/apiRouters");
 
 const app = express();
 
@@ -15,11 +16,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// routes
+// allowing access from all origins (remove this when this app is relesed)
 app.use(function(req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*")
     next();
 });
+
+// routes
 app.use("/", router)
+app.use('/api', apiRouter);
 
 module.exports = app;
