@@ -9,6 +9,14 @@ let models = {
             });
         })
     },
+    getCities: function(){
+        return new Promise(function(resolve, reject){
+            db.query('SELECT * FROM cities', function (error, result) {
+                if (error) throw error;
+                resolve(result)
+            });
+        })
+    },
 }
 
 module.exports = models;

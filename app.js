@@ -18,7 +18,8 @@ app.use(bodyParser.json());
 
 // allowing access from all origins (remove this when this app is relesed)
 app.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 

@@ -5,11 +5,12 @@ var router = express.Router();
 let productsController = require("../controllers/productsControllers");
 let categoriesController = require("../controllers/categoriesControllers");
 let usersController = require("../controllers/usersControllers");
-let feeController = require("../controllers/feeController");
+let propertiesController = require("../controllers/propertiesController");
 
 // routes that does not need Authorization
 router.get("/", (req, res) => { res.send("this is the api page")})
-router.get('/fee', feeController.getFeePrices)
+router.get('/fee', propertiesController.getFeePrices)
+router.get('/cities', propertiesController.getCities)
 router.get('/products', productsController.getProducts)
 router.get('/categories', categoriesController.getCategories)
 router.get('/users', usersController.getAllUsers)
