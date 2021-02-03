@@ -13,14 +13,14 @@ module.exports = {
         return new Promise((resolve, reject) => {
             let sessionID = generator.generate({length: 15, numbers: true, symbols: true, uppercase: true, lowercase: true})
             let expireDate = moment().utc(1).add(sessionAgeInHours, "hours").format('YYYYMMDDHH');
-            db.query(`SELECT * FROM sessions WHERE email = '${email}'`, function (error, result) {
+            db.query(`SELECT * FROM sessions WHERE email = '${db.escape(email)}'`, function (error, result) {
                 if(result[0] != null){
-                    db.query(`UPDATE 7anut.sessions SET ID = '${sessionID}', expire_date = '${expireDate}' WHERE (email = '${email}')`, (error, result) => {
+                    db.query(`UPDATE 7anut.sessions SET ID = '${db.escape(sessionID)}', expire_date = '${db.escape(expireDate)}' WHERE (email = '${db.escape(email)}')`, (error, result) => {
                         if(error) throw error;
                         resolve(sessionID);
                     })
                 }else{
-                    db.query(`INSERT INTO 7anut.sessions (ID, expire_date, email) VALUES ('${sessionID}', '${expireDate}', '${email}')`, function (error, result) {
+                    db.query(`INSERT INTO 7anut.sessions (ID, expire_date, email) VALUES ('${db.escape(sessionID)}', '${db.escape(expireDate)}', '${db.escape(email)}')`, function (error, result) {
                         if(error) throw error;
                         resolve(sessionID);
                     })
@@ -30,7 +30,7 @@ module.exports = {
     },
     checkUserSession: (object) => {
         return new Promise(function(resolve, reject){
-            db.query(`SELECT * FROM sessions WHERE ID = '${object.sessionID}'`, function (error, result) {
+            db.query(`SELECT * FROM sessions WHERE ID = '${db.escape(object.sessionID)}'`, function (error, result) {
                 if (error){
                     resolve({"error": error});
                     return;
@@ -49,7 +49,7 @@ module.exports = {
                 }
                 // resetting the time to count from the beggining
                 let expireDate = moment().utc(1).add(sessionAgeInHours, "hours").format('YYYYMMDDHH');
-                db.query(`UPDATE 7anut.sessions SET expire_date = '${expireDate}' WHERE (ID = '${object.sessionID}')`, function (theerror, result) {
+                db.query(`UPDATE 7anut.sessions SET expire_date = '${db.escape(expireDate)}' WHERE (ID = '${db.escape(object.sessionID)}')`, function (theerror, result) {
                     if (theerror){
                         resolve({"error": theerror});
                         return;
