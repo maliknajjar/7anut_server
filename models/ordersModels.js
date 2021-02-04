@@ -1,6 +1,7 @@
 let db = require("../db");
 let moment = require('moment');
 let uniqid = require('uniqid');
+const { json } = require("express");
 
 let models = {
     addOrder: function(object){
@@ -19,7 +20,7 @@ let models = {
                 ) 
                 VALUES (
                     ${db.escape(uniqid())}, 
-                    ${db.escape("Active")}, 
+                    ${db.escape(JSON.stringify({status: "Pending", color: {r: 255, g: 200, b: 0}, message: null}))}, 
                     ${db.escape(object.email)}, 
                     ${db.escape(object.orders)}, 
                     ${db.escape(object.transportFee)}, 

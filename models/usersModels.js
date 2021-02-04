@@ -51,7 +51,7 @@ let usersModels = {
                 return;
             }
             // looking for the requested sign in
-            db.query(`SELECT * FROM users WHERE email = '${db.escape(object.email)}'`, function (error, result) {
+            db.query(`SELECT * FROM users WHERE email = ${db.escape(object.email)}`, function (error, result) {
                 if (error){
                     resolve({"error": error});
                     return;
@@ -74,7 +74,7 @@ let usersModels = {
     },
     forgetPassword: (object) => {
         return new Promise(function(resolve, reject){
-            db.query(`SELECT * FROM users WHERE email = '${db.escape(object.email)}'`, function (error, result) {
+            db.query(`SELECT * FROM users WHERE email = ${db.escape(object.email)}`, function (error, result) {
                 if (error){
                     resolve({"error": error});
                     return;
@@ -97,7 +97,7 @@ let usersModels = {
         return new Promise(function(resolve, reject){
             // changing the name
             if(object.type == "full name"){
-                db.query(`UPDATE 7anut.users SET fullName = '${db.escape(object["inputs"]["new name"])}' WHERE (email = '${db.escape(object.email)}');`, function (error, result) {
+                db.query(`UPDATE 7anut.users SET fullName = ${db.escape(object["inputs"]["new name"])} WHERE (email = ${db.escape(object.email)});`, function (error, result) {
                     if (error){
                         resolve({"error": error});
                         return;
@@ -106,7 +106,7 @@ let usersModels = {
                 });
             }
             else if(object.type == "phone number"){
-                db.query(`UPDATE 7anut.users SET phoneNumber = '${db.escape(object["inputs"]["new phone Number"])}' WHERE (email = '${db.escape(object.email)}');`, function (error, result) {
+                db.query(`UPDATE 7anut.users SET phoneNumber = ${db.escape(object["inputs"]["new phone Number"])} WHERE (email = ${db.escape(object.email)});`, function (error, result) {
                     if (error){
                         resolve({"error": error});
                         return;
@@ -115,7 +115,7 @@ let usersModels = {
                 });
             }
             else if(object.type == "password"){
-                db.query(`SELECT * FROM users WHERE email = '${db.escape(object.email)}'`, function (error, result) {
+                db.query(`SELECT * FROM users WHERE email = ${db.escape(object.email)}`, function (error, result) {
                     if (error){
                         resolve({"error": error});
                         return;
@@ -126,7 +126,7 @@ let usersModels = {
                             return;
                         }
                         bcrypt.hash(object["inputs"]["new password"], 10).then((hash) => {
-                            db.query(`UPDATE 7anut.users SET password = '${db.escape(hash)}' WHERE (email = '${db.escape(object.email)}');`, function (error, result) {
+                            db.query(`UPDATE 7anut.users SET password = ${db.escape(hash)} WHERE (email = ${db.escape(object.email)});`, function (error, result) {
                                 if (error){
                                     resolve({"error": error});
                                     return;

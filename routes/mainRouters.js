@@ -2,10 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 // controllers
-let productsController = require("../controllers/productsControllers")
+let adminController = require("../controllers/adminControllers")
 
-//routes
+//main route
 router.get('/', function (req, res) {res.render("index");})
-router.get("/products", productsController.getProducts)
+
+// admin routes
+router.get("/admin", adminController.renderAdminPage)
+router.post("/admin", adminController.grantToken)
 
 module.exports = router;
