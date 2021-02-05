@@ -1,26 +1,54 @@
-.flex{
-    display: flex;
+.topdiv > div{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 50%;
+    height: 75%;
+    overflow-y: scroll;
+    font-size: 18px;
+    padding: 15px;
 }
-.margin{
-    margin: 5px;
+.topdiv{
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
 }
-.padding{
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f0f0f0;
+}
+.status{
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 100%;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+}
+.showOrders{
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
     padding: 5px;
+    cursor: pointer;
 }
-.border{
-    border: 1.6px solid black;
-    border-radius: 5px;
-}
-.fixedWidth{
-    width: 100px;
-}
-.greyBC{
-    background-color: rgb(219, 219, 219);
-}
-.BCimage{
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100px;
-    height: 100px;
+.showOrders:hover{
+    color: white;
+    background-color: black;
+    cursor: pointer;
 }

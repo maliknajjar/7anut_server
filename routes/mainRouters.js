@@ -13,5 +13,6 @@ router.get('/', function (req, res) {
 router.get("/adminlogin", adminController.getLoginPage)
 router.post("/adminlogin", adminController.adminLogin)
 router.get("/admin", adminController.checkAdminToken, adminController.renderAdminHomePage)
+router.post("/admin/changeOrdersStatus", adminController.checkAdminToken, adminController.changeOrdersStatus)
 
 module.exports = router;
