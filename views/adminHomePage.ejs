@@ -23,7 +23,11 @@
         <% for(var i = 0; i < orders.length; i++) { %>
             <tr>
                 <% for( let e = 0; e < Object.values(orders[i]).length; e++ ) { %>
-                    <td><%= Object.values(orders[i])[e] %> </td>
+                    <% if (e == 2) { %>
+                        <td><%- JSON.parse(Object.values(orders[i])[e])["status"] + `<div class='status' style='background-color: rgb(${JSON.parse(Object.values(orders[i])[e])["color"]["r"]}, ${JSON.parse(Object.values(orders[i])[e])["color"]["g"]}, ${JSON.parse(Object.values(orders[i])[e])["color"]["b"]});'></div>` %> </td>
+                    <% }else{ %>
+                        <td><%= Object.values(orders[i])[e] %> </td>
+                    <% } %>
                 <% } %>
             </tr>
         <% } %>
@@ -44,6 +48,13 @@
     
     tr:nth-child(even) {
       background-color: #dddddd;
+    }
+    .status{
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        border-radius: 100%;
+        border: 2px solid rgba(0, 0, 0, 0.5);
     }
     </style>
 </html>

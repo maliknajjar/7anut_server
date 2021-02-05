@@ -51,7 +51,7 @@ let models = {
     },
     getAllOrders: function(object){
         return new Promise(function(resolve, reject){
-            db.query(`Select * FROM orders`, (error, result) => {
+            db.query(`Select * FROM orders ORDER BY recieveDate DESC;`, (error, result) => {
                 if (error){
                     resolve({"error": error});
                     return;
