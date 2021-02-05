@@ -49,6 +49,17 @@ let models = {
             })
         })
     },
+    getAllOrders: function(object){
+        return new Promise(function(resolve, reject){
+            db.query(`Select * FROM orders`, (error, result) => {
+                if (error){
+                    resolve({"error": error});
+                    return;
+                }
+                resolve(result);
+            })
+        })
+    },
 }
 
 module.exports = models;

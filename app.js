@@ -1,6 +1,8 @@
 const express = require("express");
-const path = require("path");
+const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser');
+const path = require("path");
+
 const router = require("./routes/mainRouters")
 const apiRouter = require("./routes/apiRouters");
 
@@ -8,6 +10,9 @@ const app = express();
 
 // adding template engine
 app.set('view engine', 'ejs');
+
+// parse cookies
+app.use(cookieParser())
 
 //adding static files
 app.use(express.static(path.join(__dirname, 'public')));

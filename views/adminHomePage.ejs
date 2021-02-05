@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin home page</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>orderID</th>
+            <th>status</th>
+            <th>userEmail</th>
+            <th>orders</th>
+            <th>transportfee</th>
+            <th>subtotal</th>
+            <th>address</th>
+            <th>paymentType</th>
+            <th>orderTime</th>
+            <th>deliveryDate</th>
+        </tr>
+        <% for(var i = 0; i < orders.length; i++) { %>
+            <tr>
+                <% for( let e = 0; e < Object.values(orders[i]).length; e++ ) { %>
+                    <td><%= Object.values(orders[i])[e] %> </td>
+                <% } %>
+            </tr>
+        <% } %>
+    </table>
+</body>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+</html>

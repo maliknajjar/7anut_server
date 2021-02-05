@@ -5,10 +5,13 @@ var router = express.Router();
 let adminController = require("../controllers/adminControllers")
 
 //main route
-router.get('/', function (req, res) {res.render("index");})
+router.get('/', function (req, res) {
+    res.render("index");
+})
 
 // admin routes
-router.get("/admin", adminController.renderAdminPage)
-router.post("/admin", adminController.grantToken)
+router.get("/adminlogin", adminController.getLoginPage)
+router.post("/adminlogin", adminController.adminLogin)
+router.get("/admin", adminController.checkAdminToken, adminController.renderAdminHomePage)
 
 module.exports = router;
