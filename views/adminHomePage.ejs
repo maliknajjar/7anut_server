@@ -12,7 +12,7 @@
             <th>orderID</th>
             <th>status</th>
             <th>userEmail</th>
-            <th>orders</th>
+            <th style="width: 200px;">orders</th>
             <th>transportfee</th>
             <th>subtotal</th>
             <th>address</th>
@@ -24,7 +24,24 @@
             <tr>
                 <% for( let e = 0; e < Object.values(orders[i]).length; e++ ) { %>
                     <% if (e == 2) { %>
-                        <td><%- JSON.parse(Object.values(orders[i])[e])["status"] + `<div class='status' style='background-color: rgb(${JSON.parse(Object.values(orders[i])[e])["color"]["r"]}, ${JSON.parse(Object.values(orders[i])[e])["color"]["g"]}, ${JSON.parse(Object.values(orders[i])[e])["color"]["b"]});'></div>` %> </td>
+                        <td>
+                            <div style="display: flex;">
+                                <%- JSON.parse(Object.values(orders[i])[e])["status"] + `<div class='status' style='margin-left: 5px;background-color: rgb(${JSON.parse(Object.values(orders[i])[e])["color"]["r"]}, ${JSON.parse(Object.values(orders[i])[e])["color"]["g"]}, ${JSON.parse(Object.values(orders[i])[e])["color"]["b"]});'></div>` %> 
+                            </div>
+                        </td>
+                    <% } else if (e == 4) { %>
+                        <td>
+                            <div style="overflow-y:scroll; height: 100px;">
+                                <% let ordersArr = JSON.parse(Object.values(orders[i])[e]) %> 
+                                <% for( let a = 0; a < ordersArr.length; a++ ) { %>
+                                    <%- "name: " + ordersArr[a]["Name"] %><br>
+                                    <%- "Price: " + ordersArr[a]["price"] %> DT<br>
+                                    <%- "size: " + ordersArr[a]["size"] %> <br>
+                                    <%- "qty: " + ordersArr[a]["qty"] %> 
+                                    <br><br>
+                                <% } %>
+                            </div>
+                        </td>
                     <% }else{ %>
                         <td><%= Object.values(orders[i])[e] %> </td>
                     <% } %>
@@ -37,7 +54,6 @@
     table {
       font-family: arial, sans-serif;
       border-collapse: collapse;
-      width: 100%;
     }
     
     td, th {
