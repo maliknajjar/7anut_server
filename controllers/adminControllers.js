@@ -36,8 +36,11 @@ let controllers = {
         })
     },
     changeOrdersStatus: (req, res) => {
-        console.log(req.body)
-        res.json(req.body)
+        orderModel.changeOrdersStatus(req.body)
+        .then((result) => {
+            if(result["error"] != null) return res.json(result)
+            res.redirect("/admin")
+        })
     },
 }
 

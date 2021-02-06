@@ -23,6 +23,7 @@
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
+  width: 100%;
 }
 
 td, th {
@@ -56,8 +57,8 @@ tr:nth-child(even) {
     display: flex;
     padding: 10px;
     margin: 10px 0px;
-    border: 2px solid black;
-    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.253);
+    border-radius: 5px;
 }
 .submit > *{
     margin: 0px 5px;

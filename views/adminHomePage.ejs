@@ -11,16 +11,16 @@
             <div class="submit">
                 <select name="status">
                     <option class="option" value='{"color": {"b": 0, "g": 200, "r": 255}, "status": "Pending", "message": null}'>Pending</option>
-                    <option class="option" value='{"color": {"b": 0, "g": 255, "r": 0}, "status": "Approved", "message": null}'>Approved</option>
-                    <option class="option" value='{"color": {"b": 0, "g": 0, "r": 255}, "status": "Canceled", "message": null}'>Canceled</option>
-                    <option class="option" value='{"color": {"b": 255, "g": 0, "r": 0}, "status": "Delivered", "message": null}'>Delivered</option>
+                    <option class="option" value='{"color": {"b": 131, "g": 255, "r": 120}, "status": "Approved", "message": null}'>Approved</option>
+                    <option class="option" value='{"color": {"b": 130, "g": 130, "r": 255}, "status": "Canceled", "message": null}'>Canceled</option>
+                    <option class="option" value='{"color": {"b": 138, "g": 138, "r": 138}, "status": "Delivered", "message": null}'>Delivered</option>
                 </select>
                 <input class="input" type="text" placeholder="message">
                 <button type="submit">submit</button>
             </div>
             <table>
                 <tr>
-                    <th></th>
+                    <th><input class="masterCheckbox" type="checkbox"></th>
                     <th>ID</th>
                     <th>orderID</th>
                     <th>status</th>
@@ -36,7 +36,7 @@
                 <% for(var i = 0; i < orders.length; i++) { %>
                     <tr>
                         <td>
-                            <input type="checkbox" name="ID" value="<%= Object.values(orders[i])[0] %>">
+                            <input class="slaveCheckbox" type="checkbox" name="ID" value="<%= Object.values(orders[i])[0] %>">
                         </td>
                         <% for( let e = 0; e < Object.values(orders[i]).length; e++ ) { %>
                             <% if (e == 2) { %>
@@ -44,6 +44,7 @@
                                     <div style="display: flex;">
                                         <%- JSON.parse(Object.values(orders[i])[e])["status"] + `<div class='status' style='margin-left: 5px;background-color: rgb(${JSON.parse(Object.values(orders[i])[e])["color"]["r"]}, ${JSON.parse(Object.values(orders[i])[e])["color"]["g"]}, ${JSON.parse(Object.values(orders[i])[e])["color"]["b"]});'></div>` %> 
                                     </div>
+                                    <div style="color: blue;"><%- JSON.parse(Object.values(orders[i])[e])["message"] ? "message: " + JSON.parse(Object.values(orders[i])[e])["message"] : "" %></div>
                                 </td>
                             <% } else if (e == 4) { %>
                                 <% 

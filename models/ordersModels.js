@@ -60,6 +60,29 @@ let models = {
             })
         })
     },
+    changeOrdersStatus: function(object){
+        return new Promise(function(resolve, reject){
+            let sql = "";
+            if (object.ID == null){
+                resolve({"error": "no order selected"})
+                return
+            }
+            if (Array.isArray(object.ID)){
+                object.ID.forEach(element => {
+                    sql += `UPDATE orders SET status = ${db.escape(object["status"])} WHERE ID = ${db.escape(element)};`
+                })
+            }else{
+                sql = `UPDATE orders SET status = ${db.escape(object["status"])} WHERE ID = ${db.escape(object.ID)};`
+            }
+            db.query(sql, (error, result) => {
+                if (error){
+                    resolve({"error": error});
+                    return;
+                }
+                resolve({"message": "orders status changed"});
+            })
+        })
+    },
 }
 
 module.exports = models;
