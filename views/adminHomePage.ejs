@@ -8,6 +8,16 @@
     </head>
     <body>
         <form action="/admin/changeOrdersStatus" method="POST">
+            <div class="submit">
+                <select name="status">
+                    <option class="option" value='{"color": {"b": 0, "g": 200, "r": 255}, "status": "Pending", "message": null}'>Pending</option>
+                    <option class="option" value='{"color": {"b": 0, "g": 255, "r": 0}, "status": "Approved", "message": null}'>Approved</option>
+                    <option class="option" value='{"color": {"b": 0, "g": 0, "r": 255}, "status": "Canceled", "message": null}'>Canceled</option>
+                    <option class="option" value='{"color": {"b": 255, "g": 0, "r": 0}, "status": "Delivered", "message": null}'>Delivered</option>
+                </select>
+                <input class="input" type="text" placeholder="message">
+                <button type="submit">submit</button>
+            </div>
             <table>
                 <tr>
                     <th></th>
@@ -18,7 +28,7 @@
                     <th>orders&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                     <th>transportfee</th>
                     <th>subtotal</th>
-                    <th>address</th>
+                    <th>address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                     <th>paymentType</th>
                     <th>orderTime</th>
                     <th>deliveryDate</th>
