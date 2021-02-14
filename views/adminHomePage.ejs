@@ -7,6 +7,13 @@
         <title>admin home page</title>
     </head>
     <body>
+        <div style="display: flex;">
+            <form action="/admin"><input type="hidden" name="status" value="All" /><button type="submit">All</button></form>
+            <form action="/admin"><input type="hidden" name="status" value="Pending" /><button type="submit">Pending</button></form>
+            <form action="/admin"><input type="hidden" name="status" value="Approved" /><button type="submit">Approved</button></form>
+            <form action="/admin"><input type="hidden" name="status" value="Canceled" /><button type="submit">Canceled</button></form>
+            <form action="/admin"><input type="hidden" name="status" value="Delivered" /><button type="submit">Delivered</button></form>
+        </div>
         <form action="/admin/changeOrdersStatus" method="POST">
             <div class="submit">
                 <select name="status">
@@ -29,9 +36,10 @@
                     <th>transportfee</th>
                     <th>subtotal</th>
                     <th>address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                    <th>paymentType</th>
+                    <th>payType</th>
                     <th>orderTime</th>
                     <th>deliveryDate</th>
+                    <th>phoneNumber</th>
                 </tr>
                 <% for(var i = 0; i < orders.length; i++) { %>
                     <tr>

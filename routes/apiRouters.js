@@ -18,6 +18,7 @@ router.get('/users', usersController.getAllUsers)
 router.post('/createuser', usersController.createUser)
 router.post('/signin', usersController.signIn)
 router.post('/forgetpassword', usersController.forgetPassword)
+router.post('/changeforgottenPassword', usersController.changeForgottenPassword)
 
 // routes that needs session Authorization
 router.use(usersController.checkUserSession) // Authorization checker

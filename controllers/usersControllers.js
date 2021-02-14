@@ -25,6 +25,12 @@ module.exports = {
             res.json(result)
         })
     },
+    changeForgottenPassword: (req, res) => {
+        usersModels.changeForgottenPassword(req.body)
+        .then((result) => {
+            res.json(result)
+        })
+    },
     checkUserSession: (req, res, next) => {
         usersModels.checkUserSession(req.body)
         .then((result) => {

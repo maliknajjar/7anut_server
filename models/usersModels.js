@@ -1,4 +1,5 @@
 let db = require("../db");
+let mail = require("../mailer");
 let validator = require("email-validator");
 let functions = require("./functions/functions")
 let bcrypt = require('bcrypt');
@@ -37,7 +38,7 @@ let usersModels = {
                         return;
                     }
                     functions.userSessionGiver(object.email).then((theSession) =>{
-                        resolve({"message": "account created successfully", "session": theSession, "fullName": object.fullName, "phoneNumber": object.phoneNumber, "email": result[0].email});
+                        resolve({"message": "account created successfully", "session": theSession, "fullName": object.fullName, "phoneNumber": object.phoneNumber, "email": object.email});
                     })
                 })
             });
@@ -83,16 +84,40 @@ let usersModels = {
                     resolve({"error": "email does not exist"})
                     return;
                 }
-                ////////////////////////////////////////////////////////
-                // send email and change password in the databse here //
-                ////////////////////////////////////////////////////////
+                mail(object.email, "email from the app", result[0].password.substr(result[0].password.length - 6))
                 resolve({"message": "check your email for password"})
             });
         })
     },
-    
-    checkUserSession: functions.checkUserSession,
-
+    changeForgottenPassword: (object) => {
+        return new Promise(function(resolve, reject){
+            db.query(`SELECT * FROM users WHERE email = ${db.escape(object.email)}`, function (error, result) {
+                if (error){
+                    resolve({"error": error});
+                    return;
+                }
+                if(result[0] == null){
+                    resolve({"error": "email does not exist"})
+                    return;
+                }
+                // check if the pin is correct
+                if (object.pin != result[0].password.substr(result[0].password.length - 6)){
+                    resolve({"error": "pin is not correct"})
+                    return;
+                }
+                // change the password here
+                bcrypt.hash(object.newPassword, 10).then(function(hash) {
+                    db.query(`UPDATE 7anut.users SET password = ${db.escape(hash)} WHERE (email = ${db.escape(object.email)});`, function (error, result) {
+                        if (error){
+                            resolve({"error": error});
+                            return;
+                        }
+                        resolve({"message": "Successfully Changed Password"})
+                    });
+                });
+            });
+        })
+    },
     editProfile: (object) => {
         return new Promise(function(resolve, reject){
             // changing the name
@@ -122,7 +147,7 @@ let usersModels = {
                     }
                     bcrypt.compare(object["inputs"]["old password"], result[0].password).then((boolean) => {
                         if(!boolean){
-                            resolve({"error": "password does not match"});
+                            resolve({"error": "old password is wrong"});
                             return;
                         }
                         bcrypt.hash(object["inputs"]["new password"], 10).then((hash) => {
@@ -142,7 +167,8 @@ let usersModels = {
                 return
             }
         })
-    }
+    },
+    checkUserSession: functions.checkUserSession
 }
 
 module.exports = usersModels;

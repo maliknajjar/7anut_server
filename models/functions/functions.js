@@ -3,7 +3,7 @@ let generator = require('generate-password');
 let moment = require('moment');
 
 // define the maximum age of session's validity
-let sessionAgeInHours = 1; 
+let sessionAgeInHours = process.env.APPUSERSESSIONEXP; 
 
 module.exports = {
     isNumber: (number) => {

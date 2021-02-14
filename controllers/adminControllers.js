@@ -12,7 +12,7 @@ let controllers = {
     adminLogin: (req, res) => {
         if(req.body.username == process.env.THEUSERNAME && req.body.password == process.env.PASSWORD){
             // generate token
-            res.cookie("token", jwt.sign({username: req.body.username}, process.env.TOKEN_SECRET, { expiresIn: '24h' }))
+            res.cookie("token", jwt.sign({username: req.body.username}, process.env.TOKEN_SECRET, { expiresIn: process.env.ADMINTOKENEXP + 'h' }), {httpOnly: true})
             res.redirect("/admin")
         }else{
             res.redirect("/adminlogin")
@@ -30,7 +30,7 @@ let controllers = {
         }
     },
     renderAdminHomePage: (req, res) => {
-        orderModel.getAllOrders()
+        orderModel.getAllOrders(req.query)
         .then((result) => {
             res.render("adminHomePage", {orders: result})
         })

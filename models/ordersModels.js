@@ -50,8 +50,10 @@ let models = {
         })
     },
     getAllOrders: function(object){
+        let sql = `Select orders.ID, orders.orderID, orders.status, orders.userEmail, orders.orders, orders.transportFee, orders.totalPrice, orders.address, orders.paymentType, orders.orderTime, orders.recieveDate, users.phoneNumber from orders inner join users on orders.userEmail = users.email WHERE JSON_VALUE(status, '$.status') LIKE ${db.escape(object.status ? object.status : "Pending")} order by recieveDate desc;`
+        let sql2 = `Select orders.ID, orders.orderID, orders.status, orders.userEmail, orders.orders, orders.transportFee, orders.totalPrice, orders.address, orders.paymentType, orders.orderTime, orders.recieveDate, users.phoneNumber from orders inner join users on orders.userEmail = users.email order by recieveDate desc;`
         return new Promise(function(resolve, reject){
-            db.query(`Select * FROM orders ORDER BY recieveDate DESC;`, (error, result) => {
+            db.query(object.status == "All" ? sql2 : sql, (error, result) => {
                 if (error){
                     resolve({"error": error});
                     return;
@@ -68,9 +70,7 @@ let models = {
                 return
             }
             if (Array.isArray(object.ID)){
-                object.ID.forEach(element => {
-                    sql += `UPDATE orders SET status = ${db.escape(object["status"])} WHERE ID = ${db.escape(element)};`
-                })
+                sql = `UPDATE orders SET status = ${db.escape(object["status"])} WHERE ID IN (${db.escape(object.ID)});`
             }else{
                 sql = `UPDATE orders SET status = ${db.escape(object["status"])} WHERE ID = ${db.escape(object.ID)};`
             }
