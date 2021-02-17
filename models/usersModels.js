@@ -3,6 +3,8 @@ let mail = require("../mailer");
 let validator = require("email-validator");
 let functions = require("./functions/functions")
 let bcrypt = require('bcrypt');
+var generator = require('generate-password');
+let moment = require('moment');
 
 let usersModels = {
     getAllUsers: () => {
@@ -84,8 +86,18 @@ let usersModels = {
                     resolve({"error": "email does not exist"})
                     return;
                 }
-                mail(object.email, "email from the app", result[0].password.substr(result[0].password.length - 6))
-                resolve({"message": "check your email for password"})
+                // generate password
+                let pin = generator.generate({length: 6, numbers: true});
+                let timeout = moment().utc(1).add(15, "minutes").format('YYYYMMDDHHmm')
+                // add it to the database with a timeoutfield
+                db.query(`UPDATE 7anut.users SET pin = ${db.escape(JSON.stringify({pin: pin, timeout: timeout}))} WHERE (email = ${db.escape(object.email)});`, function (error, result) {
+                    if (error){
+                        resolve({"error": error});
+                        return;
+                    }
+                    mail(object.email, "email from the app", pin)
+                    resolve({"message": "check your email for password"})
+                });
             });
         })
     },
@@ -100,8 +112,13 @@ let usersModels = {
                     resolve({"error": "email does not exist"})
                     return;
                 }
+                // check if the pin is not timed out
+                if(JSON.parse(result[0].pin)["timeout"] < moment().utc(1).format('YYYYMMDDHHmm')){
+                    resolve({"error": "the pin is not valid anymore"})
+                    return;
+                }
                 // check if the pin is correct
-                if (object.pin != result[0].password.substr(result[0].password.length - 6)){
+                if (object.pin != JSON.parse(result[0].pin)["pin"]){
                     resolve({"error": "pin is not correct"})
                     return;
                 }

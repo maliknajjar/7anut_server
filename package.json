@@ -11,7 +11,7 @@
     "ejs": "^3.1.5",
     "email-validator": "^2.0.4",
     "express": "^4.17.1",
-    "generate-password": "^1.5.1",
+    "generate-password": "^1.6.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "mongodb": "^3.6.0",

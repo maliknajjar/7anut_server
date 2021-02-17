@@ -5,9 +5,7 @@ var router = express.Router();
 let adminController = require("../controllers/adminControllers")
 
 //main route
-router.get('/', function (req, res) {
-    res.render("index");
-})
+router.get('/', function (req, res) { res.render("index"); })
 
 // admin routes
 router.get("/adminlogin", adminController.getLoginPage)
