@@ -12,5 +12,6 @@ router.get("/adminlogin", adminController.getLoginPage)
 router.post("/adminlogin", adminController.adminLogin)
 router.get("/admin", adminController.checkAdminToken, adminController.renderAdminHomePage)
 router.post("/admin/changeOrdersStatus", adminController.checkAdminToken, adminController.changeOrdersStatus)
+router.post("/admin/activate", adminController.checkAdminToken, adminController.activateUser)
 
 module.exports = router;

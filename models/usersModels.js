@@ -96,7 +96,7 @@ let usersModels = {
                         return;
                     }
                     mail(object.email, "email from the app", pin)
-                    resolve({"message": "check your email for password"})
+                    resolve({"message": "Check your email for pin"})
                 });
             });
         })
@@ -183,6 +183,32 @@ let usersModels = {
                 resolve({"error": "didnt recieve the correct type"})
                 return
             }
+        })
+    },
+    activateUser: (object) => {
+        return new Promise(function(resolve, reject){
+            db.query(`UPDATE users SET isReal=1 WHERE email = ${db.escape(object.email)}`, function (error, result) {
+                if (error){
+                    resolve({"error": error});
+                    return;
+                }
+                resolve({"message": "success"})
+            });
+        })
+    },
+    CheckIsBanned: (object) => {
+        return new Promise(function(resolve, reject){
+            db.query(`SELECT * FROM users WHERE email = ${db.escape(object.email)}`, function (error, result) {
+                if (error){
+                    resolve({"error": error});
+                    return;
+                }
+                if (result[0].isBanned){
+                    resolve({"error": "this account was banned"});
+                    return;
+                }
+                resolve({"message": "success"})
+            });
         })
     },
     checkUserSession: functions.checkUserSession

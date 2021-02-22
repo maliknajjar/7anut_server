@@ -47,5 +47,12 @@ module.exports = {
         .then((result) => {
             res.json(result)
         })
+    },
+    CheckIsBanned: (req, res, next) => {
+        usersModels.CheckIsBanned(req.body)
+        .then((result) => {
+            if (result["error"] != null) return res.json(result)
+            else next()
+        })
     }
 }

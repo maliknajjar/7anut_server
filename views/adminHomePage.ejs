@@ -40,6 +40,7 @@
                     <th>orderTime</th>
                     <th>deliveryDate</th>
                     <th>phoneNumber</th>
+                    <th>isReal</th>
                 </tr>
                 <% for(var i = 0; i < orders.length; i++) { %>
                     <tr>
@@ -91,6 +92,8 @@
                                         <%- !address["instructions"] ? "" : "instructions: " + address["instructions"] %>
                                     <% } %> 
                                 </td>
+                            <% } else if (e == 12) { %>
+                                <td><%- Object.values(orders[i])[e] == 0 ? `<div style='color: blue; cursor: pointer;' class="activate" data-email='${Object.values(orders[i])[3]}'>Activate</div>` : 1 %> </td>
                             <% }else{ %>
                                 <td><%= Object.values(orders[i])[e] %></td>
                             <% } %>

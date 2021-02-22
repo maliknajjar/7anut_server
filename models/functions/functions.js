@@ -11,7 +11,7 @@ module.exports = {
     },
     userSessionGiver: (email) => {
         return new Promise((resolve, reject) => {
-            let sessionID = generator.generate({length: 15, numbers: true, symbols: true, uppercase: true, lowercase: true})
+            let sessionID = generator.generate({length: 16, numbers: true, symbols: true, uppercase: true, lowercase: true})
             let expireDate = moment().utc(1).add(sessionAgeInHours, "hours").format('YYYYMMDDHH');
             db.query(`SELECT * FROM sessions WHERE email = ${db.escape(email)}`, function (error, result) {
                 if(result[0] != null){

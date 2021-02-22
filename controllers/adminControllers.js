@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 
-const orderModel = require("../models/ordersModels")
+const orderModel = require("../models/ordersModels");
+const usersModels = require("../models/usersModels");
 
 let controllers = {
     getLoginPage: (req, res) => {
@@ -37,6 +38,13 @@ let controllers = {
     },
     changeOrdersStatus: (req, res) => {
         orderModel.changeOrdersStatus(req.body)
+        .then((result) => {
+            if(result["error"] != null) return res.json(result)
+            res.redirect("/admin")
+        })
+    },
+    activateUser: (req, res) => {
+        usersModels.activateUser(req.body)
         .then((result) => {
             if(result["error"] != null) return res.json(result)
             res.redirect("/admin")
