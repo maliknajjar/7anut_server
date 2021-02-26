@@ -88,6 +88,7 @@ header > div{
 }
 .partOne > div > .phonImage > img{
     width: 400px;
+    filter: saturate(150%);
 }
 .partOne > div > div > *{
     width: 100%;
