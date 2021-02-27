@@ -87,7 +87,7 @@ header > div{
     }
 }
 .partOne > div > .phonImage > img{
-    width: 400px;
+    width: 300px;
     filter: saturate(150%);
 }
 .partOne > div > div > *{
@@ -140,12 +140,21 @@ header > div{
     width: 100%;
     height: 100vh;
     background-color: red;
+    background-image: url("/images/texture1.png"), linear-gradient(#FFF27B, #FFF5A0);
 }
-.partTwo div{
+.partTwo > div{
     display: flex;
     width: 100%;
     height: 100%;
     max-width: 1200px;
     padding: 20px;
     background-color: green;
+}
+.partTwo > div > div:nth-child(1){
+    background-color: hotpink;
+    flex: 3;
+}
+.partTwo > div > div:nth-child(2){
+    background-color: grey;
+    flex: 5;
 }
