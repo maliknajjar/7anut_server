@@ -41,9 +41,6 @@ header > div{
 .nav > div{
     padding: 5px 15px;
     padding-top: 7.5px;
-    border: 2px solid rgba(0, 0, 0, 0.103);
-    border-radius: 10px;
-    background-color: #ffffff21;
 }
 
 /*
@@ -60,6 +57,26 @@ header > div{
     height: 100vh;
     padding-top: 90px;
     box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.25);
+}
+.partOne > .how{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    width: 175px;
+    height: 100px;
+    max-width: unset;
+    padding: unset;
+    text-decoration: underline;
+}
+.partOne > .how > img{
+    position: absolute;
+    bottom: 0px;
+    animation-name: arrowAnimation;
+    animation-iteration-count: infinite;
+    animation-duration: 1000ms;
 }
 .partOne > div{
     display: flex;
@@ -175,6 +192,35 @@ header > div{
 }
 
 /* 
+    >>>>>>>>>>>>>>>>>> footer <<<<<<<<<<<<<<<<<<<
+*/
+footer{
+    position: relative;
+    height: 100px;
+    width: 100%;
+    background-color: #FFF7AE;
+}
+footer > .footerContainer {
+    position: absolute;
+    top: -30px;
+    width: 100%;
+    height: 50px;
+}
+footer > .footerContainer > .footer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/forFooter.png');
+    background-repeat: repeat-x;
+    background-size: 1000px;
+    background-position: center;
+}
+footer > .theFooter {
+    position: relative;
+    z-index: 20;
+}
+
+/* 
     >>>>>>>>>>>>>>>>>> animations <<<<<<<<<<<<<<<<<<<
 */
 @keyframes mobile{
@@ -185,5 +231,16 @@ header > div{
     to{
         opacity: 1.0;
         margin-top: 0px;
+    }
+}
+@keyframes arrowAnimation {
+    0% {
+        bottom: 2.5px;
+    } 
+    50% {
+        bottom: 10px;
+    }
+    100% {
+        bottom: 2.5px;
     }
 }
