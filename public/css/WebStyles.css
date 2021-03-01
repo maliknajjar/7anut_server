@@ -1,7 +1,11 @@
 *{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Almarai', Helvetica, Arial;
+    line-height: 160%;
     /* make padding not effect the width or the height of the div */
     box-sizing: border-box;
+
+    /* removing the scrolling bar */
+    overflow-x: hidden;
 }
 body{
     margin: 0;
@@ -32,13 +36,77 @@ header > div{
 .nav{
     display: flex;
     justify-content: end;
-    max-width: 400px;
     font-weight: bold;
 }
 .nav > div{
     padding: 5px 15px;
+    white-space: nowrap;
 }
-
+.options {
+    display: none;
+}
+.navPop{
+    display: none;
+    position: fixed;
+    background-color: #FFF7AE;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+}
+.navPop > .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid black;
+    font-size: xx-large;
+}
+.navPop > .header > .title {
+    font-weight: bold;
+}
+.navPop > .header > .remove {
+    font-weight: bold;
+    font-size: xx-large;
+}
+.navPop > .list > .item {
+    margin: 15px 0px;
+    font-weight: bold;
+    font-size: larger;
+}
+.langPop {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000063;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+}
+.langPop > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff280;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.719);
+    margin: 15px;
+    width: 100vw;
+    max-width: 200px;
+}
+.langPop > div > a {
+    background-color: #fff7ac;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 5px 0px;
+    text-decoration: none;
+    color: black;
+}
 /*
     >>>>>>> first part <<<<<<<
 */
@@ -114,7 +182,6 @@ header > div{
 .appStores > div:nth-child(1){
     background-image: url("/images/amazonColored.png");
     background-position: center;
-    background-position-y: 14px;
     background-repeat: no-repeat;
     background-size: 150px;
     height: 50px;
@@ -128,7 +195,7 @@ header > div{
     background-image: url("/images/appGallery.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     height: 50px;
     width: 170px;
     transition: 0.2s;
@@ -214,7 +281,6 @@ footer > .theFooter {
 footer > .theFooter > div{
     padding: 10px 0px;
     margin: 10px 10px;
-    width: 200px;
 }
 footer > .theFooter > div > .title{
     font-size: large;
@@ -228,21 +294,64 @@ footer > .theFooter > div > div{
     >>>>>>>>>>>>>>>>>> media queries <<<<<<<<<<<<<<<<<<<
 */
 @media screen and (max-width: 800px) {
+    header {
+        padding: 0 15px;
+    }
     .partOne > div {
         flex-direction: column-reverse;
         align-items: center;
     }
     .partOne > div > .phonImage > img{
-        width: 200px;
+        width: auto;
+        height: 100%;
+    }
+    .partOne > div > div{
+        margin-left: 0 !important;
+        text-align: center;
+    }
+    .phonImage {
+        flex: 4 !important;
     }
     .theTitle {
-        font-size: xx-large !important;
+        font-size: x-large !important;
     }
     .theDescription {
-        font-size: x-large !important;
+        font-size: large !important;
     }
     .appStores {
         margin-top: 15px;
+        margin-bottom: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .appStores > div {
+        margin-bottom: 7.5px;
+        width: 150px !important;
+        height: 40px !important;
+        background-size: 125px !important;
+    }
+    .partTwo > div {
+        flex-direction: column;
+        padding: 50px;
+    }
+    .partTwo {
+        height: unset;
+    }
+    .partTwo > div > div:nth-child(2) {
+        margin-top: 30px;
+        
+    }
+    .partTwo > div > div:nth-child(2) > .title {
+        font-size: 24px;
+    }
+    .partTwo > div > div:nth-child(2) > .description {
+        font-size: 18px;
+    }
+    .nav {
+        display: none;
+    }
+    .options {
+        display: block;
     }
 }
 

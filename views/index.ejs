@@ -4,22 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/WebStyles.css">
-    <title>Document</title>
+    <% if (lang == "ar") { %>
+        <style>@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap');</style>
+    <% } %>
+    <title><%- words["word"][lang] %></title>
 </head>
 <body>
     <header>
         <div>
             <div><img src="images/logo-01.png" width="100" alt=""></div>
             <div class="nav">
+                <div><%- words["FAQ"][lang] %></div>
+                <div><%- words["ABOUT"][lang] %></div>
                 <div>7ANUT WEB</div>
+                <div class="language" style="position: relative; display: flex; align-items: center;">
+                    <img style="margin-right: 5px;" src="/images/language.png" alt="" width="20" height="20">
+                    <%- lang.toUpperCase() %>
+                </div>
             </div>
+            <div class="options">
+                <img src="/images/options.png" alt="" width="30" height="25">
+            </div>
+            
         </div>
     </header>
+    <div class="navPop">
+        <div class="header">
+            <div class="title"><%- words["Menu"][lang] %></div>
+            <div class="remove">X</div>
+        </div>
+        <div class="list">
+            <div class="item"><%- words["FAQ"][lang] %></div>
+            <div class="item"><%- words["ABOUT"][lang] %></div>
+            <div class="item">7ANUT WEB</div>
+            <div class="language item">
+                <img src="/images/language.png" alt="" width="20" height="20">
+                EN
+            </div>
+        </div>
+    </div>
+    <div class="langPop">
+        <div>
+            <a href="?lang=ar">
+                عربي
+                <img style="position: relative; top: 5px;" src="/images/language.png" alt="" width="20">
+            </a>
+            <a href="?lang=en">
+                English
+                <img style="position: relative; top: 5px;" src="/images/language.png" alt="" width="20">
+            </a>
+            <a href="?lang=fr">
+                Français
+                <img style="position: relative; top: 5px;" src="/images/language.png" alt="" width="20">
+            </a>
+        </div>
+    </div>
     <div class="partOne">
         <div>
             <div style="flex: 3; margin-left: 5vw;">
-                <span class="theTitle" style="font-size: 50px; font-style: italic; font-weight: bold;">The best app ever!!</span>
-                <span class="theDescription" style="font-size: 35px; margin-top: 10px;">with 7anut you can buy anything you like.</span>
+                <span class="theTitle" style="font-size: 40px; font-style: italic; font-weight: bold;"><%- words["title"][lang] %></span>
+                <span class="theDescription" style="font-size: 25px; margin-top: 10px;"><%- words["description"][lang] %></span>
                 <div class="appStores">
                     <div></div>
                     <div></div>
@@ -37,8 +81,8 @@
         <div>
             <div><img src="/images/pickProductsAnimation.gif" alt=""></div>
             <div>
-                <div class="title">1. Pick Items </div>
-                <div class="description">choose a category and pick items you want by pressing the add button.</div>
+                <div class="title">1. <%- words["Pick Items"][lang] %></div>
+                <div class="description"><%- words["Pick Items description"][lang] %></div>
             </div>
         </div>
     </div>
@@ -46,8 +90,8 @@
         <div>
             <div><img src="/images/mapAnimation.gif" alt=""></div>
             <div>
-                <div class="title" dir="ltr">2. Select your address</div>
-                <div class="description" dir="ltr">Select your address by pinning your location.</div>
+                <div class="title" dir="ltr">2. <%- words["Select your address"][lang] %></div>
+                <div class="description" dir="ltr"><%- words["Select your address description"][lang] %></div>
             </div>
         </div>
     </div>
@@ -55,8 +99,8 @@
         <div>
             <div><img src="/images/orderAnimation.gif" alt=""></div>
             <div>
-                <div class="title">3. Order Items </div>
-                <div class="description">Once picking items and selecting address you can check the bill and order your stuff.</div>
+                <div class="title">3. <%- words["Order Items"][lang] %> </div>
+                <div class="description"><%- words["Order Items des"][lang] %></div>
             </div>
         </div>
     </div>
@@ -64,8 +108,8 @@
         <div>
             <div><img src="/images/ordersAnimation.gif" alt=""></div>
             <div>
-                <div class="title" dir="ltr">4. Check your orders status</div>
-                <div class="description" dir="ltr">You can check your orders status by going the the orders screen.</div>
+                <div class="title" dir="ltr">4. <%- words["Check your orders status"][lang] %></div>
+                <div class="description" dir="ltr"><%- words["Check your orders status des"][lang] %></div>
             </div>
         </div>
     </div>
@@ -73,41 +117,34 @@
         <div>
             <div><img src="/images/wait.gif" alt=""></div>
             <div>
-                <div class="title">5. Wait for orders to come</div>
-                <div class="description">Orders come in the next day or choose any day of the week.</div>
+                <div class="title">5. <%- words["Wait for orders to come"][lang] %></div>
+                <div class="description"><%- words["Wait for orders to come des"][lang] %></div>
             </div>
         </div>
     </div>
     <footer>
         <div class="theFooter">
             <div>
-                <div class="title">Download app</div>
+                <div class="title"><%- words["Download app"][lang] %></div>
                 <div class="appStores" style="flex-direction: column;">
                     <div style="margin-bottom: 20px"></div>
                     <div ></div>
                 </div>
             </div>
             <div>
+                <div class="title">7anut</div>
+                <div>
+                    <img style="filter: saturate(0%);" src="images/Logo.png" width="150" alt="">
+                </div>
+                <div>© <%- new Date().getFullYear() %>&nbsp; 7anut App</div>
+            </div>
+            <!-- <div>
                 <div class="title">test</div>
                 <div>test</div>
                 <div>test</div>
                 <div>test</div>
                 <div>test</div>
-            </div>
-            <div>
-                <div class="title">test</div>
-                <div>test</div>
-                <div>test</div>
-                <div>test</div>
-                <div>test</div>
-            </div>
-            <div>
-                <div class="title">test</div>
-                <div>test</div>
-                <div>test</div>
-                <div>test</div>
-                <div>test</div>
-            </div>
+            </div> -->
         </div>
     </footer>
 </body>

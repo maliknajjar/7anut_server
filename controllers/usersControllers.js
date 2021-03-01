@@ -1,4 +1,5 @@
 let usersModels = require("../models/usersModels")
+let dictionairy = require("../dictionairy")
 
 module.exports = {
     getAllUsers: (req, res) => {
@@ -54,5 +55,18 @@ module.exports = {
             if (result["error"] != null) return res.json(result)
             else next()
         })
+    },
+    renderIndexPage: (req, res) => {
+        let defaultLang = "en";
+        var farFuture = new Date(new Date().getTime() + (1000*60*60*24*365*10)); // ~10y
+        if (req.query.lang) {
+            req.cookies.lang = req.query.lang
+            res.cookie('lang', req.query.lang, { expires: farFuture });
+        }
+        if (!req.cookies.lang){
+            req.cookies.lang = defaultLang
+            res.cookie('lang', defaultLang, { expires: farFuture });
+        }
+        res.render("index", {words: dictionairy, lang: req.cookies.lang});
     }
 }

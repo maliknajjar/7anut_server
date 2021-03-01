@@ -3,9 +3,10 @@ var router = express.Router();
 
 // controllers
 let adminController = require("../controllers/adminControllers")
+let usersController = require("../controllers/usersControllers")
 
 //main route
-router.get('/', function (req, res) { res.render("index"); })
+router.get('/', usersController.renderIndexPage)
 
 // admin routes
 router.get("/adminlogin", adminController.getLoginPage)
