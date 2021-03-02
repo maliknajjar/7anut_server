@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/WebStyles.css">
+    <link rel="icon" href="/images/icon.png">
     <% if (lang == "ar") { %>
         <style>@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap');</style>
     <% } %>
@@ -14,9 +15,9 @@
         <div>
             <div><img src="images/logo-01.png" width="100" alt=""></div>
             <div class="nav">
-                <div><%- words["FAQ"][lang] %></div>
-                <div><%- words["ABOUT"][lang] %></div>
-                <div>7ANUT WEB</div>
+                <!-- <a><%# words["FAQ"][lang] %></a> -->
+                <!-- <a><%# words["ABOUT"][lang] %></a> -->
+                <a href="/web" target="_blank">7ANUT WEB</a>
                 <div class="language" style="position: relative; display: flex; align-items: center;">
                     <img style="margin-right: 5px;" src="/images/language.png" alt="" width="20" height="20">
                     <%- lang.toUpperCase() %>
@@ -34,9 +35,15 @@
             <div class="remove">X</div>
         </div>
         <div class="list">
-            <div class="item"><%- words["FAQ"][lang] %></div>
-            <div class="item"><%- words["ABOUT"][lang] %></div>
-            <div class="item">7ANUT WEB</div>
+            <!-- <div>
+                <a><%# words["FAQ"][lang] %></a>
+            </div> -->
+            <!-- <div>
+                <a><%# words["ABOUT"][lang] %></a>
+            </div> -->
+            <div>
+                <a href="/web" target="_blank">7ANUT WEB</a>
+            </div>
             <div class="language item">
                 <img src="/images/language.png" alt="" width="20" height="20">
                 <%- lang.toUpperCase() %>

@@ -200,7 +200,7 @@ let usersModels = {
         return new Promise(function(resolve, reject){
             db.query(`SELECT * FROM users WHERE email = ${db.escape(object.email)}`, function (error, result) {
                 if (error){
-                    resolve({"error": error});
+                    throw error
                     return;
                 }
                 if (result[0].isBanned){
