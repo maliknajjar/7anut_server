@@ -203,9 +203,11 @@ let usersModels = {
                     throw error
                     return;
                 }
-                if (result[0].isBanned){
-                    resolve({"error": "this account was banned"});
-                    return;
+                if(result[0] != undefined){
+                    if (result[0].isBanned){
+                        resolve({"error": "this account was banned"});
+                        return;
+                    }
                 }
                 resolve({"message": "success"})
             });
