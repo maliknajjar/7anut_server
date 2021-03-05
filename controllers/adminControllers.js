@@ -11,7 +11,7 @@ let controllers = {
         })
     },
     adminLogin: (req, res) => {
-        if(req.body.username == process.env.THEUSERNAME && req.body.password == process.env.PASSWORD){
+        if(req.body.username == process.env.THEUSERNAME && req.body.password == process.env.THEPASSWORD){
             // generate token
             res.cookie("token", jwt.sign({username: req.body.username}, process.env.TOKEN_SECRET, { expiresIn: process.env.ADMINTOKENEXP + 'h' }), {httpOnly: true})
             res.redirect("/admin")
