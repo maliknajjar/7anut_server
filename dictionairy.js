@@ -20,7 +20,7 @@ module.exports = {
         "ar": "القائمة"
     },
     "title": {
-        "en": "The best app ever!!",
+        "en": "The best fucking app ever!!",
         "fr": "The best app ever!!",
         "ar": "افضل تطبيق في العالم"
     },
