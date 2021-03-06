@@ -8,14 +8,15 @@ const apiRouter = require("./routes/apiRouters");
 
 const app = express();
 
-// adding template engine
-app.set('view engine', 'ejs');
-
 // parse cookies
 app.use(cookieParser())
 
 //adding static files
 app.use(express.static(path.join(__dirname, 'public')));
+
+// adding template engine
+app.use(express.static(path.join(__dirname, 'views')));
+app.set('view engine', 'ejs');
 
 // parse body
 app.use(bodyParser.urlencoded({ extended: false }));
