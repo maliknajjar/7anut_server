@@ -6,7 +6,7 @@ const path = require("path");
 const router = require("./routes/mainRouters")
 const apiRouter = require("./routes/apiRouters");
 
-// const app = express();
+const app = express();
 
 // adding template engine
 app.set('view engine', 'ejs');
