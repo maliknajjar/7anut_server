@@ -23,7 +23,7 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "start": "nodemon db"
+    "start": "nodemon -e js,ejs db"
   },
   "author": "",
   "license": "ISC"
