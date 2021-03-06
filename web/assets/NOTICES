@@ -7071,6 +7071,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 --------------------------------------------------------------------------------
 geolocator
 geolocator_platform_interface
+geolocator_web
 
 MIT License
 
