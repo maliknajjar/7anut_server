@@ -17,7 +17,7 @@ pool.getConnection((err, connection) => {
 	console.log('database is Connected!');
 	// listening after making sure database is connected
 	require('./app').listen(process.env.PORT, ()=>{
-		console.log("listening on port 8000")
+		console.log("listening on port: " + process.env.PORT)
 	});
 });
 
