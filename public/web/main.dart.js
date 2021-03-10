@@ -74152,7 +74152,7 @@ O.mV.prototype={
 af:function(){return new O.KE(C.p)}}
 O.KE.prototype={
 aO:function(){this.b8()
-G.RC("http://localhost/api/cities").a5(0,new O.a9f(this),t.P).cO(new O.a9g(this))},
+G.RC("https://7anut.app/api/cities").a5(0,new O.a9f(this),t.P).cO(new O.a9g(this))},
 L:function(a,b){var s,r,q,p,o,n,m=null
 b.Y(t.w).toString
 if(!this.d)s=new Z.k8(m)
@@ -74291,7 +74291,7 @@ $0:function(){var s,r,q=this,p=q.b,o=q.a
 p.$1(new X.a9j(o))
 s=t.X
 r=q.e
-G.iz("http://localhost/api/removeuseraddress",P.v(["sessionID",$.rS,"email",$.kK,"addressID",J.aG(J.e(J.e(q.c,q.d),"ID"))],s,s),null).a5(0,new X.a9k(o,p,r),t.P).cO(new X.a9l(r))},
+G.iz("https://7anut.app/api/removeuseraddress",P.v(["sessionID",$.rS,"email",$.kK,"addressID",J.aG(J.e(J.e(q.c,q.d),"ID"))],s,s),null).a5(0,new X.a9k(o,p,r),t.P).cO(new X.a9l(r))},
 $S:1}
 X.a9j.prototype={
 $0:function(){this.a.a=!0},
@@ -74709,7 +74709,7 @@ Z.nd.prototype={
 af:function(){return new Z.Lq(C.p)}}
 Z.Lq.prototype={
 aO:function(){this.b8()
-G.RC("http://localhost/api/fee").a5(0,new Z.abJ(this),t.P).cO(new Z.abK(this))},
+G.RC("https://7anut.app/api/fee").a5(0,new Z.abJ(this),t.P).cO(new Z.abK(this))},
 L:function(a7,a8){var s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a=this,a0=null,a1="Address",a2="Payment Type",a3=a8.Y(t.w).f,a4=t.bO.a(T.kd(a8,t.c).b.b),a5=J.a7(a4),a6=J.d_(J.ex(a5.h(a4,a1)))
 if(J.dU(a5.h(a4,a1),"location"))for(s=0;s<a6.length;++s)if(s===1)a6[s]=J.aW(J.e(a6[s],"latitude"),5)+", "+J.aW(J.e(a6[s],"longitude"),5)
 C.c.eN(a6,0)
@@ -74789,7 +74789,7 @@ $0:function(){this.a.e=!0},
 $S:1}
 Z.abF.prototype={
 $1:function(a){var s=t.X,r=P.v(["Content-Type","application/json"],s,s),q=a.a,p=J.a7(q),o=this.a,n=this.b,m=J.a7(n)
-G.iz("http://localhost/api/addOrder",C.t.hp(P.v(["sessionID",p.h(q,"sessionID"),"email",p.h(q,"email"),"orders",C.t.m8($.bK,null),"transportFee",P.pk(J.aW(o.f,3)),"totalPrice",P.pk(C.e.aX(U.Dm()+o.f,3)),"address",C.t.m8(m.h(n,"Address"),null),"paymentType",J.aG(m.h(n,"Payment Type")),"recieveDate",J.aG(m.h(n,"Recieve Date"))],s,t.c)),r).a5(0,new Z.abD(this.c),t.P)},
+G.iz("https://7anut.app/api/addOrder",C.t.hp(P.v(["sessionID",p.h(q,"sessionID"),"email",p.h(q,"email"),"orders",C.t.m8($.bK,null),"transportFee",P.pk(J.aW(o.f,3)),"totalPrice",P.pk(C.e.aX(U.Dm()+o.f,3)),"address",C.t.m8(m.h(n,"Address"),null),"paymentType",J.aG(m.h(n,"Payment Type")),"recieveDate",J.aG(m.h(n,"Recieve Date"))],s,t.c)),r).a5(0,new Z.abD(this.c),t.P)},
 $S:23}
 Z.abD.prototype={
 $1:function(a){if(J.e(C.t.c4(0,B.cp(U.co(a.e).c.a.h(0,"charset")).aE(0,a.x),null),"error")!=null){L.dE(this.a,"Session is expired",C.F)
@@ -74865,7 +74865,7 @@ o.k(r,s,p.h(q,s))
 q=t.X
 q=P.v(["content-type","application/json"],q,q)
 p=this.c
-G.iz("http://localhost/api/editProfile",C.t.hp(r),q).a5(0,new V.acs(this.a,p,a,r),t.P).cO(new V.act(p))},
+G.iz("https://7anut.app/api/editProfile",C.t.hp(r),q).a5(0,new V.acs(this.a,p,a,r),t.P).cO(new V.act(p))},
 $S:23}
 V.acs.prototype={
 $1:function(a){var s=this,r="charset",q="this account was banned",p=a.e,o=B.cp(U.co(p).c.a.h(0,r)),n=a.x
@@ -74956,7 +74956,7 @@ if(q.d===""){q.e5(J.e($.C.h(0,"fields are not filled"),$.y),2000,C.F)
 return}q.V(0,new M.acN(q))
 s=t.X
 r=this.b
-G.iz("http://localhost/api/forgetpassword",P.v(["email",q.d],s,s),null).a5(0,new M.acO(q,r),t.P).cO(new M.acP(r))},
+G.iz("https://7anut.app/api/forgetpassword",P.v(["email",q.d],s,s),null).a5(0,new M.acO(q,r),t.P).cO(new M.acP(r))},
 $S:1}
 M.acN.prototype={
 $0:function(){var s=null
@@ -75230,7 +75230,7 @@ L.MM.prototype={
 p_:function(a){var s,r=this
 r.V(0,new L.ae9(r))
 s=t.P
-G.RC("http://localhost/api/categories").a5(0,new L.aea(r),s).a5(0,new L.aeb(r),s).cO(new L.aec(r))},
+G.RC("https://7anut.app/api/categories").a5(0,new L.aea(r),s).a5(0,new L.aeb(r),s).cO(new L.aec(r))},
 aO:function(){this.b8()
 this.p_(0)},
 L:function(a,b){var s,r,q,p,o,n,m,l,k,j=this,i=null,h=4281348144,g=b.Y(t.w).f.a.a,f=P.n(191,0,0,0),e=U.em("assets/images/logo-01.png",25),d=C.h.h(0,200),c=t.t
@@ -75241,7 +75241,7 @@ d=f?g*0.025:15
 s=f?g*0.025:15
 r=f?g*0.025:15
 q=H.a([],c)
-for(p=t.O,o=g*0.06,n=g*0.04,m=0;m<J.bd(j.d);++m){l=C.d.P("http://localhost",J.e(J.e(j.d,m),"imageUrl"))
+for(p=t.O,o=g*0.06,n=g*0.04,m=0;m<J.bd(j.d);++m){l=C.d.P("https://7anut.app",J.e(J.e(j.d,m),"imageUrl"))
 k=f?o:35
 k=new P.ai(k,k)
 k=M.i(i,i,i,i,new S.A(C.m,new X.nj(new D.ke(l),C.ir),i,new K.bh(k,k,k,k),H.a([new O.u(2,P.n(C.q.a6(127.5),158,158,158),new P.f(2,2),5)],p),i,C.f),i,new V.h(8,8,8,8),i,i)
@@ -75263,12 +75263,12 @@ this.a.d=C.t.aE(0,r.aE(0,q))
 $.a1N=C.t.aE(0,B.cp(U.co(s).c.a.h(0,"charset")).aE(0,q))},
 $S:8}
 L.aeb.prototype={
-$1:function(a){G.RC("http://localhost/api/products/").a5(0,new L.ae8(this.a),t.P)},
+$1:function(a){G.RC("https://7anut.app/api/products/").a5(0,new L.ae8(this.a),t.P)},
 $S:15}
 L.ae8.prototype={
 $1:function(a){var s,r=this.a
 if(r.c!=null){s=t.X
-G.iz("http://localhost/api/getuseraddreses",P.v(["email",$.kK,"sessionID",$.rS],s,s),null).a5(0,new L.ae7(r,a),t.P)}},
+G.iz("https://7anut.app/api/getuseraddreses",P.v(["email",$.kK,"sessionID",$.rS],s,s),null).a5(0,new L.ae7(r,a),t.P)}},
 $S:8}
 L.ae7.prototype={
 $1:function(a){var s
@@ -75420,7 +75420,7 @@ if(q.d===""||q.e===""){q.e5(J.e($.C.h(0,"fields are not filled"),$.y),2000,C.F)
 return}q.V(0,new T.aeN(q))
 s=t.X
 r=this.b
-G.iz("http://localhost/api/signin",P.v(["email",q.d,"password",q.e],s,s),null).a5(0,new T.aeO(q,r),t.P).cO(new T.aeP(r))},
+G.iz("https://7anut.app/api/signin",P.v(["email",q.d,"password",q.e],s,s),null).a5(0,new T.aeO(q,r),t.P).cO(new T.aeP(r))},
 $S:1}
 T.aeN.prototype={
 $0:function(){this.a.f=U.em("assets/images/theLoading.gif",30)},
@@ -75542,7 +75542,7 @@ U.od.prototype={
 af:function(){return new U.NN(C.p)}}
 U.NN.prototype={
 p_:function(a){var s=t.X
-G.iz("http://localhost/api/getuserorders",P.v(["email",$.kK,"sessionID",$.rS],s,s),null).a5(0,new U.ag0(this),t.P).cO(new U.ag1(this))},
+G.iz("https://7anut.app/api/getuserorders",P.v(["email",$.kK,"sessionID",$.rS],s,s),null).a5(0,new U.ag0(this),t.P).cO(new U.ag1(this))},
 aO:function(){this.b8()
 this.p_(0)},
 L:function(a4,a5){var s,r,q,p,o,n,m,l,k,j,i,h,g,f,e=this,d=null,c="status",b="color",a="orderTime",a0="paymentType",a1=M.i(d,d,d,d,d,10,d,d,d),a2=t.w,a3=a5.Y(a2).f
@@ -75698,7 +75698,7 @@ if(q.d===""||q.e===""){q.e5(J.e($.C.h(0,"fields are not filled"),$.y),2000,C.F)
 return}q.V(0,new X.ag9(q))
 s=t.X
 r=this.b
-G.iz("http://localhost/api/changeforgottenPassword",P.v(["email",q.a.c,"newPassword",q.e,"pin",q.d],s,s),null).a5(0,new X.aga(q,r),t.P).cO(new X.agb(r))},
+G.iz("https://7anut.app/api/changeforgottenPassword",P.v(["email",q.a.c,"newPassword",q.e,"pin",q.d],s,s),null).a5(0,new X.aga(q,r),t.P).cO(new X.agb(r))},
 $S:1}
 X.ag9.prototype={
 $0:function(){var s=null
@@ -75879,7 +75879,7 @@ return}if(p.x!=p.y){p.e5(J.e($.C.h(0,"Password does not match"),$.y),2000,C.F)
 return}p.V(0,new A.agW(p))
 s=t.X
 r=this.b
-G.iz("http://localhost/api/createUser",P.v(["email",p.e,"fullName",p.f,"phoneNumber",p.r,"password",p.x],s,s),null).a5(0,new A.agX(p,r),t.P).cO(new A.agY(r))},
+G.iz("https://7anut.app/api/createUser",P.v(["email",p.e,"fullName",p.f,"phoneNumber",p.r,"password",p.x],s,s),null).a5(0,new A.agX(p,r),t.P).cO(new A.agY(r))},
 $S:1}
 A.agW.prototype={
 $0:function(){this.a.d=U.em("assets/images/theLoading.gif",30)},
@@ -75999,7 +75999,7 @@ h=J.a7(i)
 g=U.apv(J.aG(h.h(i,"ID")))
 f=C.q.a6(127.5)
 e=P.n(f,0,0,0)
-d=C.d.P("http://localhost",h.h(i,"imageUrl"))
+d=C.d.P("https://7anut.app",h.h(i,"imageUrl"))
 c=a3?p:35
 c=new P.ai(c,c)
 c=M.i(a1,new T.vw(new L.b2(g,new A.H(!0,e,a1,a1,a1,a1,110,C.z,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1),a1,a1,a1,a1,a1,a1,a1),a1),a1,a1,new S.A(C.m,new X.nj(new D.ke(d),C.ir),a1,new K.bh(c,c,c,c),H.a([new O.u(2,P.n(f,158,158,158),new P.f(2,2),5)],q),a1,C.f),100,a1,a1,100)
@@ -76021,7 +76021,7 @@ b=a3?n:20
 a9.push(T.av(H.a([new T.oD(C.bO,a1,C.a1,g,a1),new T.q1(1,C.iD,M.i(a1,T.av(H.a([new L.b2(f,new A.H(!0,a1,a1,a1,a1,a1,e,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1),C.fH,a1,a1,a1,a1,a1,a1),T.aB(H.a([new L.b2(d,new A.H(!0,C.ub,a1,a1,a1,a1,c,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1),C.fH,a1,a1,a1,a1,a1,a1),new L.b2(h,new A.H(!0,C.ub,a1,a1,a1,a1,b,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1,a1),C.fH,a1,a1,a1,a1,a1,a1)],a8),C.l,C.a6,C.k)],a8),C.W,C.o,C.k),a1,a1,a1,a1,new V.h(10,7.5,0,0),a1,1/0),a1)],a8),C.l,C.o,C.k))}return T.b9(M.i(a1,B.aqF(0.65,a9,3,a7,15,new V.h(a6,a4,a5,100)),C.m,new S.ae(0,600,0,1/0),a1,a1,a1,a1,a1),a1,a1)}}
 O.aaB.prototype={
 $0:function(){var s=this.b,r=J.a7(s)
-U.alM(J.aG(r.h(s,"ID")),r.h(s,"Name"),r.h(s,"size"),C.d.P("http://localhost",r.h(s,"imageUrl")),J.aG(r.h(s,"price")))
+U.alM(J.aG(r.h(s,"ID")),r.h(s,"Name"),r.h(s,"size"),C.d.P("https://7anut.app",r.h(s,"imageUrl")),J.aG(r.h(s,"price")))
 this.a.a.EI(0)},
 $S:1}
 K.uW.prototype={
@@ -76126,7 +76126,7 @@ if(r)E.eY(new K.abh(),q,p)
 else{s.V(0,new K.abi(s))
 o=P.v(["title",s.d,"state",s.r,"city",s.x,"streetAddress",s.e,"streetAddress2",s.f,"instructions",s.y],p,p)
 r=t.X
-G.iz("http://localhost/api/createuseraddress",P.v(["sessionID",$.rS,"email",$.kK,"address",C.t.m8(o,null)],r,r),null).a5(0,new K.abj(s,o,q),t.P).cO(new K.abk(q))}},
+G.iz("https://7anut.app/api/createuseraddress",P.v(["sessionID",$.rS,"email",$.kK,"address",C.t.m8(o,null)],r,r),null).a5(0,new K.abj(s,o,q),t.P).cO(new K.abk(q))}},
 $S:1}
 K.abh.prototype={
 $1:function(a){var s=null,r=K.a0(10),q=C.h.h(0,50),p=M.i(s,L.Q(J.e($.C.h(0,"Make sure to fill all the fields"),$.y),s,s,s,s,B.D(s,s,16,s,s),s,s),s,s,s,s,new V.h(0,20,0,40),s,s),o=K.a0(12),n=H.a([P.n(C.q.a6(25.5),0,0,0),P.n(6,0,0,0)],t.d),m=C.h.h(0,100),l=K.a0(10),k=t.t
@@ -76274,7 +76274,7 @@ o=p.d
 s=p.r
 r=t.X
 q=P.v(["title",o,"location",P.v(["latitude",s.a,"longitude",s.b],r,t.t0),"information",p.e,"instructions",p.f],m,m)
-G.iz("http://localhost/api/createuseraddress",P.v(["sessionID",$.rS,"email",$.kK,"address",C.t.m8(q,null)],r,r),null).a5(0,new Y.add(p,q,n),t.P).cO(new Y.ade(n))}},
+G.iz("https://7anut.app/api/createuseraddress",P.v(["sessionID",$.rS,"email",$.kK,"address",C.t.m8(q,null)],r,r),null).a5(0,new Y.add(p,q,n),t.P).cO(new Y.ade(n))}},
 $S:1}
 Y.adb.prototype={
 $1:function(a){var s=null,r=K.a0(10),q=C.h.h(0,50),p=M.i(s,L.Q(J.e($.C.h(0,"Make sure to fill all the fields"),$.y),s,s,s,s,B.D(s,s,16,s,s),s,s),s,s,s,s,new V.h(0,20,0,40),s,s),o=K.a0(12),n=H.a([P.n(C.q.a6(25.5),0,0,0),P.n(6,0,0,0)],t.d),m=C.h.h(0,100),l=K.a0(10),k=t.t
@@ -76336,7 +76336,7 @@ $1:function(a){var s,r,q="sessionID",p=a.a,o=J.a7(p)
 if(o.h(p,"language")==null){s=this.a
 s.V(0,new F.afL(s))}s=this.a
 if(o.h(p,q)!=null){r=t.X
-G.iz("http://localhost/api/checkUserSession",P.v(["email",o.h(p,"email"),"sessionID",o.h(p,q)],r,r),null).a5(0,new F.afM(s,a),t.P).cO(new F.afN(s))}else{M.mu()
+G.iz("https://7anut.app/api/checkUserSession",P.v(["email",o.h(p,"email"),"sessionID",o.h(p,q)],r,r),null).a5(0,new F.afM(s,a),t.P).cO(new F.afN(s))}else{M.mu()
 s.V(0,new F.afO(s))}},
 $S:23}
 F.afL.prototype={
