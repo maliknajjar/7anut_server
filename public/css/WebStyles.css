@@ -168,7 +168,7 @@ header > div{
     animation-duration: 1200ms;
 }
 .partOne > div > .phonImage > img{
-    width: 300px;
+    width: auto;
     filter: saturate(150%);
     filter: brightness(110%);
 }
