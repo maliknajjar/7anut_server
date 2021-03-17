@@ -65,7 +65,7 @@ module.exports = {
         }
         if (!req.cookies.lang){
             req.cookies.lang = defaultLang
-            res.cookie('lang', defaultLang, { expires: farFuture });
+            res.cookie('lang', req.cookies.lang, { expires: farFuture });
         }
         res.render("index", {words: dictionairy, lang: req.cookies.lang});
     }
