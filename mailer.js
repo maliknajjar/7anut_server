@@ -5,6 +5,7 @@ var transporter = nodemailer.createTransport({
     tls: {
         rejectUnauthorized: false
     },
+    secure: true,
     auth: {
         user: process.env.SMTPUSER,
         pass: process.env.SMTPPASS,
