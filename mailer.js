@@ -14,7 +14,7 @@ var transporter = nodemailer.createTransport({
 
 module.exports = (toEmail, subject, html) => {
     var mailOptions = {
-        from: process.env.SMTPUSER,
+        from: `7anut <${process.env.SMTPUSER}>`,
         to: toEmail,
         subject: subject,
         html: html,
