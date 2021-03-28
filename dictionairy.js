@@ -81,7 +81,7 @@ module.exports = {
     },
     "Download app": {
         "en": "Download app",
-        "fr": "Téléchargez l'appli",
+        "fr": "Téléchargez l'application",
         "ar": "حمل التطبيق"
     },
 }
