@@ -182,12 +182,13 @@ header > div{
 .appStores div{
     border: 2px solid black;
     margin-right: 10px;
+    margin-top: 10px;
     border-radius: 10px;
     background-color: #ffffff33;
     overflow: hidden;
 }
 .appStores img {
-    height: 30px;
+    height: 40px;
 }
 
 /*
