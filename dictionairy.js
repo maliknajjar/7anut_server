@@ -11,7 +11,7 @@ module.exports = {
     },
     "ABOUT": {
         "en": "ABOUT",
-        "fr": "ABOUT",
+        "fr": "À PROPOS DE",
         "ar": "عن الموقع"
     },
     "Menu": {
@@ -20,68 +20,68 @@ module.exports = {
         "ar": "القائمة"
     },
     "title": {
-        "en": "The best app ever!!",
-        "fr": "The best app ever!!",
-        "ar": "افضل تطبيق في العالم"
+        "en": "7anut is a digital market app",
+        "fr": "7anut est une application de marché numérique",
+        "ar": "حانوت هو تطبيق سوق رقمي"
     },
     "description": {
         "en": "with 7anut you can buy anything you like.",
-        "fr": "with 7anut you can buy anything you like.",
+        "fr": "avec 7anut, vous pouvez acheter tout ce que vous voulez.",
         "ar": "عن طريق حانوت تستطيع شراء كل ما تريد"
     },
     "Pick Items": {
         "en": "Pick Items",
-        "fr": "Pick Items",
+        "fr": "Choisir des articles",
         "ar": "اختر المنتجات"
     },
     "Pick Items description": {
         "en": "choose a category and pick items you want by pressing the add button.",
-        "fr": "choose a category and pick items you want by pressing the add button.",
+        "fr": "choisissez une catégorie et choisissez les éléments de votre choix en appuyant sur le bouton Ajouter.",
         "ar": "اختر تصنيفا و قم باختيار الاشياء التي تريد عن طريق الضغط على زر الاضافة"
     },
     "Select your address": {
         "en": "Select your address",
-        "fr": "Select your address",
+        "fr": "Sélectionnez votre adresse",
         "ar": "اختر عنوانك"
     },
     "Select your address description": {
         "en": "you can navigate easily to your address and select it",
-        "fr": "you can navigate easily to your address and select it",
+        "fr": "vous pouvez naviguer facilement jusqu'à votre adresse et la sélectionner",
         "ar": "تستطيع التوجه الى عنوانك و اختياره بسهولة"
     },
     "Order Items": {
         "en": "Order Items",
-        "fr": "Order Items",
+        "fr": "Items commandés",
         "ar": "اطلب الاشياء"
     },
     "Order Items des": {
         "en": "Once picking items and selecting address you can check the bill and order your stuff.",
-        "fr": "Once picking items and selecting address you can check the bill and order your stuff.",
+        "fr": "Une fois que vous avez sélectionné les articles et sélectionné l'adresse, vous pouvez vérifier la facture et commander vos affaires.",
         "ar": "بعد اختيار الاشياء و اختيار عنوانك تستطيع مراجعة الفاتورة و طلب الاشياء"
     },
     "Check your orders status": {
         "en": "Check your orders status",
-        "fr": "Check your orders status",
+        "fr": "Vérifiez l'état de vos commandes",
         "ar": "راقب حالة طلباتك"
     },
     "Check your orders status des": {
         "en": "You can check your orders status by going the the orders screen.",
-        "fr": "You can check your orders status by going the the orders screen.",
+        "fr": "Vous pouvez vérifier l'état de vos commandes en accédant à l'écran des commandes.",
         "ar": "تستطيع مراقبة حالة طباتك عن طريق الذاب الى شاشة الطلبات"
     },
     "Wait for orders to come": {
         "en": "Wait for orders to come",
-        "fr": "Wait for orders to come",
+        "fr": "Attendez que les commandes arrivent",
         "ar": "انتظر وصول الطلبات"
     },
     "Wait for orders to come des": {
         "en": "Orders come in the next day or choose any day of the week.",
-        "fr": "Orders come in the next day or choose any day of the week.",
+        "fr": "Les commandes arrivent le lendemain ou choisissez n'importe quel jour de la semaine.",
         "ar": "تأتي الطلبات في اليوم التالي او تستطيع اختيار اي يوم من الاسبوع لتأتيك طلباتك"
     },
     "Download app": {
         "en": "Download app",
-        "fr": "Download app",
+        "fr": "Téléchargez l'appli",
         "ar": "حمل التطبيق"
     },
 }
