@@ -40,7 +40,7 @@ let models = {
     },
     getUserOrders: function(object){
         return new Promise(function(resolve, reject){
-            db.query(`Select * FROM orders WHERE userEmail=${db.escape(object.email)} LIMIT 2`, (error, result) => {
+            db.query(`Select * FROM orders WHERE userEmail=${db.escape(object.email)} LIMIT 25`, (error, result) => {
                 if (error){
                     resolve({"error": error});
                     return;
