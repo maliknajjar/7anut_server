@@ -9,18 +9,18 @@ module.exports = {
     isNumber: (number) => {
         return /^\d+$/.test(number);
     },
-    userSessionGiver: (email) => {
+    userSessionGiver: (email, deviceID) => {
         return new Promise((resolve, reject) => {
             let sessionID = generator.generate({length: 16, numbers: true, symbols: true, uppercase: true, lowercase: true})
             let expireDate = moment().utc(1).add(sessionAgeInHours, "hours").format('YYYYMMDDHH');
-            db.query(`SELECT * FROM sessions WHERE email = ${db.escape(email)}`, function (error, result) {
+            db.query(`SELECT * FROM sessions WHERE email = ${db.escape(email)} AND device_id = ${db.escape(deviceID)}`, function (error, result) {
                 if(result[0] != null){
-                    db.query(`UPDATE 7anut.sessions SET ID = ${db.escape(sessionID)}, expire_date = ${db.escape(expireDate)} WHERE (email = ${db.escape(email)})`, (error, result) => {
+                    db.query(`UPDATE 7anut.sessions SET ID = ${db.escape(sessionID)}, expire_date = ${db.escape(expireDate)} WHERE (device_id = ${db.escape(deviceID)})`, (error, result) => {
                         if(error) throw error;
                         resolve(sessionID);
                     })
                 }else{
-                    db.query(`INSERT INTO 7anut.sessions (ID, expire_date, email) VALUES (${db.escape(sessionID)}, ${db.escape(expireDate)}, ${db.escape(email)})`, function (error, result) {
+                    db.query(`INSERT INTO 7anut.sessions (ID, device_id, expire_date, email) VALUES (${db.escape(sessionID)}, ${db.escape(deviceID)}, ${db.escape(expireDate)}, ${db.escape(email)})`, function (error, result) {
                         if(error) throw error;
                         resolve(sessionID);
                     })

@@ -39,7 +39,7 @@ let usersModels = {
                         resolve({"error": error.code});
                         return;
                     }
-                    functions.userSessionGiver(object.email).then((theSession) =>{
+                    functions.userSessionGiver(object.email, object.deviceID).then((theSession) =>{
                         resolve({"message": "account created successfully", "session": theSession, "fullName": object.fullName, "phoneNumber": object.phoneNumber, "email": object.email});
                     })
                 })
@@ -68,7 +68,7 @@ let usersModels = {
                         resolve({"error": "password is wrong"})
                         return;
                     }
-                    functions.userSessionGiver(result[0].email).then((theSession) =>{
+                    functions.userSessionGiver(result[0].email, object.deviceID).then((theSession) =>{
                         resolve({"message": "logged in successfully", "session": theSession, "fullName": result[0].fullName, "phoneNumber": result[0].phoneNumber, "email": result[0].email});
                     })
                 })
