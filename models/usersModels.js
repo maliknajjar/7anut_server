@@ -22,6 +22,10 @@ let usersModels = {
                 resolve({"error": "fill all the fields"});
                 return;
             }
+
+            //removeing white space from email
+            object.email = object.email.replace(/\s/g,'')
+
             // validating the email
             if(!validator.validate(object.email)){
                 resolve({"error": "email is not valid"});
@@ -53,6 +57,10 @@ let usersModels = {
                 resolve({"error": "fill all the fields"});
                 return;
             }
+            
+            //removeing white space from email
+            object.email = object.email.replace(/\s/g,'')
+
             // looking for the requested sign in
             db.query(`SELECT * FROM users WHERE email = ${db.escape(object.email)}`, function (error, result) {
                 if (error){
