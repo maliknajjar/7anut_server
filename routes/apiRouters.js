@@ -11,7 +11,7 @@ let addressesController = require("../controllers/addressesControllers");
 
 // routes that does not need Authorization
 router.get("/", (req, res) => {res.send("this is the api page")})
-router.get('/initialcameraposition', (req, res) => {res.json([36.796073, 10.16149, 15])}) // !!! be sure they are all double aor you will crash the app
+router.get('/initialcameraposition', (req, res) => {res.json([36.796073, 10.16149, 10])}) // !!! be sure they are all double aor you will crash the app
 router.get('/fee', propertiesController.getFeePrices)
 router.get('/cities', propertiesController.getCities)
 router.get('/products', productsController.getProducts)
