@@ -11,7 +11,7 @@ let models = {
     },
     getCities: function(){
         return new Promise(function(resolve, reject){
-            db.query('SELECT * FROM cities', function (error, result) {
+            db.query('SELECT * FROM stores', function (error, result) {
                 if (error) throw error;
                 resolve(result)
             });
