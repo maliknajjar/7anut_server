@@ -55,11 +55,11 @@ wss.on('connection', function connection(ws) {
     ws.close()
     ws.on("message", (data) => {
         console.log(data)
-        ws.send("server: recieved message")
-        let arr = Array.from(wss.clients)[0].send("wooooow")
+        ws.send("from server: recieved message")
     })
     ws.on("close", () => {
         console.log("closed")
+        ws.send("from server: connection closed")
     })
 });
 
