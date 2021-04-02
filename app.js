@@ -53,11 +53,7 @@ const wss = new WebSocket.Server({ server });
 
 wss.on('connection', function connection(ws) {
     ws.on("message", (data) => {
-        console.log(data)
         ws.send("from server: recieved message")
-    })
-    ws.on("close", () => {
-        console.log("closed")
     })
 });
 
