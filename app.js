@@ -58,7 +58,6 @@ wss.on('connection', function connection(ws) {
     })
     ws.on("close", () => {
         console.log("closed")
-        ws.send("from server: connection closed")
     })
 });
 
