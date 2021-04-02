@@ -27,8 +27,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // parse body
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 // allowing access from all origins (remove this when this app is relesed)
 app.use(function(req, res, next) {
@@ -47,14 +47,21 @@ app.use('/api', apiRouter);
 
 const wss = new WebSocket.Server({ server });
 
-wss.on('connection', function connection(ws) { 
-    ws.send('connection establish from the server');
-    ws.on('message', function incoming(message) {
-        console.log('received: %s', message);
-    });
+// setInterval(() => {
+//     console.log(wss.clients.size)
+// }, 2500)
+
+wss.on('connection', function connection(ws) {
+    ws.close()
+    ws.on("message", (data) => {
+        console.log(data)
+        ws.send("server: recieved message")
+        let arr = Array.from(wss.clients)[0].send("wooooow")
+    })
     ws.on("close", () => {
-        console.log("connection is closed")
+        console.log("closed")
     })
 });
+
 
 module.exports = server;
