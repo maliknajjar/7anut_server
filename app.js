@@ -1,4 +1,6 @@
+var http = require('http');
 const express = require("express");
+const WebSocket = require('ws');
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser');
 const path = require("path");
@@ -6,13 +8,20 @@ const path = require("path");
 const router = require("./routes/mainRouters")
 const apiRouter = require("./routes/apiRouters");
 
+///////////////////////////////
+//          express          //
+///////////////////////////////
+
 const app = express();
+
+//creating the http server and add express in it
+let server = http.createServer(app);
 
 // adding template engine
 app.set('view engine', 'ejs');
 
 // parse cookies
-app.use(cookieParser())
+app.use(cookieParser());
 
 //adding static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -32,4 +41,20 @@ app.use(function(req, res, next) {
 app.use("/", router)
 app.use('/api', apiRouter);
 
-module.exports = app;
+/////////////////////////////////
+//          websocket          //
+/////////////////////////////////
+
+const wss = new WebSocket.Server({ server });
+
+wss.on('connection', function connection(ws) {
+    ws.send('connection establish from the server');
+    ws.on('message', function incoming(message) {
+        console.log('received: %s', message);
+    });
+    ws.on("close", () => {
+        console.log("connection is closed")
+    })
+});
+
+module.exports = server;
