@@ -47,7 +47,7 @@ app.use('/api', apiRouter);
 
 const wss = new WebSocket.Server({ server });
 
-wss.on('connection', function connection(ws) {
+wss.on('connection', function connection(ws) { 
     ws.send('connection establish from the server');
     ws.on('message', function incoming(message) {
         console.log('received: %s', message);
