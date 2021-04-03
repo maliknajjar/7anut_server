@@ -56,6 +56,9 @@ wss.on('connection', function connection(ws) {
         console.log("from client: " + data)
         ws.send("from server: hello client")
     })
+    ws.on("close", () => {
+        console.log("connection is closed")
+    })
 });
 
 
