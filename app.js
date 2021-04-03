@@ -54,7 +54,7 @@ const wss = new WebSocket.Server({ server });
 wss.on('connection', function connection(ws) {
     ws.on("message", (data) => {
         console.log("recieved message from client")
-        ws.send("from server: recieved message")
+        ws.send("recieved message")
     })
 });
 
