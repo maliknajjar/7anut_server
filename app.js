@@ -47,19 +47,14 @@ app.use('/api', apiRouter);
 
 const wss = new WebSocket.Server({ server });
 
-// setInterval(() => {
-//     console.log(wss.clients.size)
-// }, 2500)
-
 wss.on('connection', function connection(ws) {
+    console.log("connection is open")
     ws.on("message", (data) => {
-        console.log("from client: " + data)
-        ws.send("from server: hello client")
+        
     })
     ws.on("close", () => {
         console.log("connection is closed")
     })
 });
-
 
 module.exports = server;
