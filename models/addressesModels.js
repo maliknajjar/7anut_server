@@ -29,7 +29,7 @@ let models = {
         return new Promise(function(resolve, reject){
             db.query(`UPDATE addresses t1 INNER JOIN addresses t2 ON (t1.ID, t2.ID) IN ((${db.escape(object.top)},${db.escape(object.bottom)}),(${db.escape(object.bottom)},${db.escape(object.top)})) SET t1.addresse = t2.addresse`, function (error, result) {
                 if (error) throw error;
-                resolve(`${db.escape(object.top)} ${db.escape(object.bottom)}`)
+                resolve(result)
             });
         })
     },
