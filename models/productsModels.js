@@ -1,9 +1,9 @@
 let db = require("../db");
 
 let models = {
-    getProducts: function(){
+    getProducts: function(store){
         return new Promise(function(resolve, reject){
-            db.query('SELECT * FROM products', function (error, result) {
+            db.query(`SELECT * FROM products WHERE store_name = ${db.escape(store)}`, function (error, result) {
                 if (error) throw error;
                 resolve(result)
             });

@@ -15,7 +15,7 @@ router.get('/minimumversion', (req, res) => {res.send("1.0.1.1")}) // !!! be sur
 router.get('/initialcameraposition', (req, res) => {res.json([36.796073, 10.16149, 10])}) // !!! be sure they are all double aor you will crash the app
 router.get('/fee', propertiesController.getFeePrices)
 router.get('/stores', propertiesController.getCities)
-router.get('/products', productsController.getProducts)
+router.get('/products/:store', productsController.getProducts)
 router.get('/categories', categoriesController.getCategories)
 router.get('/users', usersController.getAllUsers)
 router.post('/createuser', usersController.createUser)
