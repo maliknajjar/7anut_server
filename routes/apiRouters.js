@@ -34,5 +34,7 @@ router.post('/getuseraddreses', addressesController.getuseraddreses)
 router.post('/removeuseraddress', addressesController.removeuseraddress)
 router.post('/createuseraddress', addressesController.createuseraddress)
 router.post('/swapuseraddresses', addressesController.swapuseraddresses)
+router.get('/takeproduct', productsController.takeproduct)
+router.get('/leaveproduct', productsController.leaveproduct)
 
 module.exports = router;
