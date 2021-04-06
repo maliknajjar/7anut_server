@@ -29,11 +29,11 @@ let models = {
         return new Promise(function(resolve, reject){
             db.query(`SELECT * FROM addresses WHERE ID = ${db.escape(object.top)} OR ID = ${db.escape(object.bottom)}`, function (error, result) {
                 if (error) throw error;
-                if(result[0].userEmail != object.email || result[0].userEmail == null){
+                if(result[0].userEmail != object.email){
                     resolve("the address is not yours")
                     return;
                 }
-                if(result[1].userEmail != object.email || result[0].userEmail == null){
+                if(result[1].userEmail != object.email){
                     resolve("the address is not yours")
                     return;
                 }
