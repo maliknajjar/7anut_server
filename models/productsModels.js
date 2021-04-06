@@ -14,7 +14,7 @@ let models = {
             db.query(`SELECT * FROM products WHERE ID = ${db.escape(object.ID)}`, function (error, r) {
                 if (error) throw error;
                 if (r[0].amount == 0){
-                    resolve("product finished")
+                    resolve({"msg": "product finished"})
                     return;
                 }
                 db.query(`UPDATE products SET amount = amount - 1 WHERE ID = ${db.escape(object.ID)}`, function (error, result) {
