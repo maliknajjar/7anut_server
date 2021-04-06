@@ -19,7 +19,7 @@ let models = {
     },
     leaveproduct: function(object){
         return new Promise(function(resolve, reject){
-            db.query(`UPDATE products SET amount = amount - 1 WHERE ID = ${db.escape(object.ID)}`, function (error, result) {
+            db.query(`UPDATE products SET amount = amount - 1 WHERE ID = ${db.escape(object.ID)}`, function (error, result){
                 if (error) throw error;
                 resolve(result)
             });
