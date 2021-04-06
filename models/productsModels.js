@@ -25,7 +25,11 @@ let models = {
         return new Promise(function(resolve, reject){
             db.query(`UPDATE products SET amount = amount + 1 WHERE ID = ${db.escape(object.ID)}`, function (error, result){
                 if (error) throw error;
-                resolve(result)
+                // edit user basket also
+                db.query(`UPDATE users SET basket = ${db.escape(object.basket)} WHERE email = ${db.escape(object.email)}`, function (error, theresult) {
+                    if (error) throw error;
+                    resolve(theresult)
+                });
             });
         })
     },
