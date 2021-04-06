@@ -28,7 +28,7 @@ let models = {
     swapuseraddresses: function(object){
         return new Promise(function(resolve, reject){
             if(object.top == object.bottom){
-                resolve(result)
+                resolve("two addresses are identical")
                 return;
             }
             db.query(`SELECT * FROM addresses WHERE ID = ${db.escape(object.top)} OR ID = ${db.escape(object.bottom)}`, function (error, result) {
