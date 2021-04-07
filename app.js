@@ -44,15 +44,23 @@ app.use('/api', apiRouter);
 /////////////////////////////////
 //          websocket          //
 /////////////////////////////////
+let functions = require("./models/functions/functions")
 
 const wss = new WebSocket.Server({ server });
 
 wss.on('connection', function connection(ws) {
-    console.log("connection is open")
-    ws.on("message", (data) => {
-        
+    let isAuthenticated = false;
+    ws.on("message", (msg) => {
+        let object = JSON.parse(msg)
+        functions.checkUserSession(object)
+        .then((result) => {
+            ws.send(result)
+        })
     })
     ws.on("close", () => {
+        console.log("connection is closed")
+    })
+    ws.on("error", () => {
         console.log("connection is closed")
     })
 });
