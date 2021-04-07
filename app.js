@@ -54,7 +54,11 @@ wss.on('connection', function connection(ws) {
         let object = JSON.parse(msg)
         functions.checkUserSession(object)
         .then((result) => {
-            ws.send(JSON.stringify(result))
+            if(result["error"] == null){
+                ws.send("connected successfully")
+            }else{
+                ws.close()
+            }
         })
     })
     ws.on("close", (e) => {
