@@ -57,10 +57,10 @@ wss.on('connection', function connection(ws) {
             ws.send(JSON.stringify(result))
         })
     })
-    ws.on("close", () => {
+    ws.on("close", (e) => {
         console.log("connection is closed: " + e)
     })
-    ws.on("error", (e) => {
+    ws.on("error", () => {
         console.log("error from server")
     })
 });
