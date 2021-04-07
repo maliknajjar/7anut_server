@@ -22,7 +22,9 @@ let controllers = {
     },
     returnEverything: function(req, res){
         functions.returnEverything(req.body.email)
-        res.json({"message": "done"})
+        .then((result) => {
+            res.json({"message": "done"})
+        })
     },
 }
 
