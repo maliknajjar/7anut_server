@@ -62,7 +62,7 @@ module.exports = {
     leaveEverything: (email) => {
         db.query(`SELECT * FROM users WHERE email = ${db.escape(email)}`, function (error, result) {
             if (error) throw error;
-            console.log(result[0].basket)
+            console.log(result[0].basket["17"])
         })
     }
 }
