@@ -69,7 +69,7 @@ wss.on('connection', function connection(ws) {
     })
     ws.on("close", (e) => {
         console.log("connection is closed: " + e)
-        functions.leaveEverything(connectionEmail)
+        functions.returnEverything(connectionEmail)
     })
     ws.on("error", () => {
         console.log("error from server")

@@ -59,7 +59,7 @@ module.exports = {
             });
         })
     },
-    leaveEverything: (email) => {
+    returnEverything: (email) => {
         db.query(`SELECT * FROM users WHERE email = ${db.escape(email)}`, function (error, result) {
             if (error) throw error;
             console.log(JSON.parse(result[0].basket)["17"])
