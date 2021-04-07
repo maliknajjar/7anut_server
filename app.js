@@ -52,10 +52,9 @@ wss.on('connection', function connection(ws) {
     let isAuthenticated = false;
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
-        console.log(object)
         functions.checkUserSession(object)
         .then((result) => {
-            ws.send(result)
+            ws.send(ws.send(JSON.stringify(result)))
         })
     })
     ws.on("close", () => {
