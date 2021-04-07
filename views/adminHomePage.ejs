@@ -79,7 +79,7 @@
                             <% } else if (e == 7) { %>
                             <% let address = JSON.parse(Object.values(orders[i])[e]) %> 
                                 <td>
-                                    <%- addres["store"]%><br>
+                                    <%- address["store"]%><br>
                                     <%- address["location"]["latitude"] + "," %>
                                     <%- address["location"]["longitude"] %><br>
                                     <%- address["information"] ? "information: " + address["information"] + "<br>" : "" %>
