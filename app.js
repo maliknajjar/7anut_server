@@ -54,7 +54,7 @@ wss.on('connection', function connection(ws) {
         let object = JSON.parse(msg)
         functions.checkUserSession(object)
         .then((result) => {
-            ws.send(ws.send(JSON.stringify(result)))
+            ws.send(JSON.stringify(result))
         })
     })
     ws.on("close", () => {
