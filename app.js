@@ -49,8 +49,11 @@ let functions = require("./models/functions/functions")
 const wss = new WebSocket.Server({ server });
 
 wss.on('connection', function connection(ws) {
-    let isAuthenticated = false;
     let connectionEmail;
+    let isAbleToConnect = false;
+    setTimeout(() => {
+        if(isAbleToConnect == false) ws.close()
+    }, 1000 * 60)
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
         connectionEmail = object.email
@@ -58,6 +61,7 @@ wss.on('connection', function connection(ws) {
         .then((result) => {
             if(result["error"] == null){
                 ws.send("connected successfully")
+                isAbleToConnect = true;
             }else{
                 ws.close()
             }
