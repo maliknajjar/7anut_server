@@ -51,9 +51,11 @@ const wss = new WebSocket.Server({ server });
 wss.on('connection', function connection(ws) {
     let connectionEmail;
     let isAbleToConnect = false;
+
     setTimeout(() => {
         if(isAbleToConnect == false) ws.close()
-    }, 1000 * 10)
+    }, 1000 * 15)
+
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
         connectionEmail = object.email
@@ -62,15 +64,17 @@ wss.on('connection', function connection(ws) {
             if(result["error"] == null){
                 ws.send("connected successfully")
                 isAbleToConnect = true;
+                functions.returnEverything(connectionEmail)
             }else{
                 ws.close()
             }
         })
     })
+
     ws.on("close", (e) => {
         console.log("connection is closed: " + e)
-        functions.returnEverything(connectionEmail)
     })
+    
     ws.on("error", () => {
         console.log("error from server")
     })
