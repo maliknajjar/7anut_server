@@ -60,12 +60,22 @@ module.exports = {
         })
     },
     returnEverything: (email) => {
+        // get products in user's basket
         db.query(`SELECT * FROM users WHERE email = ${db.escape(email)}`, function (error, result) { 
             if (error) throw error;
             let ordersToReturn = JSON.parse(result[0].basket)
+            // return all product the user took to its place with a loop
             for (const key in ordersToReturn) {
                 console.log("key: " + key + "\n" + "value: " + ordersToReturn[key] + "\n\n")
+                db.query(`UPDATE products SET amount = amount + ${db.escape(ordersToReturn[key])} WHERE ID = ${db.escape(key)}`, function (error, result) { 
+                    if (error) throw error;
+                })
             }
+            // clear user's basket after all products are returned
+            db.query(`UPDATE users SET basket = null WHERE email = ${db.escape(email)}`, function (error, result) { 
+                if (error) throw error;
+            })
+            console.log("everything is returned")
         })
     }
 }

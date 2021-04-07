@@ -54,7 +54,7 @@ wss.on('connection', function connection(ws) {
 
     setTimeout(() => {
         if(isAbleToConnect == false) ws.close()
-    }, 1000 * 15)
+    }, 1000 * 20)
 
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
