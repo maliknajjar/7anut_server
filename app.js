@@ -51,12 +51,11 @@ const wss = new WebSocket.Server({ server });
 wss.on('connection', function connection(ws) {
     let isAuthenticated = false;
     ws.on("message", (msg) => {
-        ws.send(msg)
-        // let object = JSON.parse(msg)
-        // functions.checkUserSession(object)
-        // .then((result) => {
-        //     ws.send(JSON.stringify(result))
-        // })
+        let object = JSON.parse(msg)
+        functions.checkUserSession(object)
+        .then((result) => {
+            ws.send(JSON.stringify(result))
+        })
     })
     ws.on("close", (e) => {
         console.log("connection is closed: " + e)
