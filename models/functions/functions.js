@@ -62,8 +62,10 @@ module.exports = {
     returnEverything: (email) => {
         db.query(`SELECT * FROM users WHERE email = ${db.escape(email)}`, function (error, result) { 
             if (error) throw error;
-            ordersToReturn = JSON.parse(result[0].basket)
-            
+            let ordersToReturn = JSON.parse(result[0].basket)
+            ordersToReturn.map((value) => {
+                console.log(value)
+            })
         })
     }
 }
