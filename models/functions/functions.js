@@ -63,10 +63,9 @@ module.exports = {
         // get products in user's basket
         db.query(`SELECT * FROM users WHERE email = ${db.escape(email)}`, function (error, result) { 
             if (error) throw error;
-            let ordersToReturn = JSON.parse(result[0].basket)
             // return all product the user took to its place with a loop
+            let ordersToReturn = JSON.parse(result[0].basket)
             for (const key in ordersToReturn) {
-                console.log("key: " + key + "\n" + "value: " + ordersToReturn[key] + "\n\n")
                 db.query(`UPDATE products SET amount = amount + ${db.escape(ordersToReturn[key])} WHERE ID = ${db.escape(key)}`, function (error, result) { 
                     if (error) throw error;
                 })
