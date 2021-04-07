@@ -79,18 +79,11 @@
                             <% } else if (e == 7) { %>
                             <% let address = JSON.parse(Object.values(orders[i])[e]) %> 
                                 <td>
-                                    <% if (address["location"]) { %> 
-                                        <%- address["location"]["latitude"] + "," %>
-                                        <%- address["location"]["longitude"] %><br>
-                                        <%- address["location"]["information"] ? "information: " + address["location"]["information"] + "<br>" : "" %>
-                                        <%- address["location"]["instructions"] ? "instructions: " + address["location"]["instructions"] : "" %> 
-                                    <% } else { %> 
-                                        <%- "state: " + address["state"] %><br>
-                                        <%- "city: " + address["city"] %><br>
-                                        <%- "streetAddress: " + address["streetAddress"] %><br>
-                                        <%- !address["streetAddress2"] ? "" : "streetAddress2: " + address["streetAddress2"] + "<br>" %>
-                                        <%- !address["instructions"] ? "" : "instructions: " + address["instructions"] %>
-                                    <% } %> 
+                                    <%- addres["store"]%><br>
+                                    <%- address["location"]["latitude"] + "," %>
+                                    <%- address["location"]["longitude"] %><br>
+                                    <%- address["information"] ? "information: " + address["information"] + "<br>" : "" %>
+                                    <%- address["instructions"] ? "instructions: " + address["instructions"] : "" %> 
                                 </td>
                             <% } else if (e == 12) { %>
                                 <td><%- Object.values(orders[i])[e] == 0 ? `<div style='color: blue; cursor: pointer;' class="activate" data-email='${Object.values(orders[i])[3]}'>Activate</div>` : 1 %> </td>
