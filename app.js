@@ -58,10 +58,10 @@ wss.on('connection', function connection(ws) {
         })
     })
     ws.on("close", () => {
-        console.log("connection is closed")
+        console.log("connection is closed: " + e)
     })
     ws.on("error", (e) => {
-        console.log("connection is closed: " + e)
+        console.log("error from server")
     })
 });
 
