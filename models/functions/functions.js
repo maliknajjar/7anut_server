@@ -58,5 +58,11 @@ module.exports = {
                 })
             });
         })
+    },
+    leaveEverything: (email) => {
+        db.query(`SELECT * FROM users WHERE email = ${email}`, function (error, result) {
+            if (error) throw error;
+            console.log(result[0])
+        })
     }
 }

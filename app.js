@@ -50,8 +50,10 @@ const wss = new WebSocket.Server({ server });
 
 wss.on('connection', function connection(ws) {
     let isAuthenticated = false;
+    let connectionEmail;
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
+        connectionEmail = object.email
         functions.checkUserSession(object)
         .then((result) => {
             if(result["error"] == null){
@@ -63,6 +65,7 @@ wss.on('connection', function connection(ws) {
     })
     ws.on("close", (e) => {
         console.log("connection is closed: " + e)
+        leaveEverything(connectionEmail)
     })
     ws.on("error", () => {
         console.log("error from server")
