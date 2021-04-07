@@ -64,7 +64,6 @@ wss.on('connection', function connection(ws) {
             if(result["error"] == null){
                 ws.send("connected successfully")
                 isAbleToConnect = true;
-                functions.returnEverything(connectionEmail)
             }else{
                 ws.close()
             }
@@ -72,6 +71,7 @@ wss.on('connection', function connection(ws) {
     })
 
     ws.on("close", (e) => {
+        functions.returnEverything(connectionEmail)
         console.log("connection is closed: " + e)
     })
     
