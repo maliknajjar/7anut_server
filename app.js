@@ -53,7 +53,7 @@ wss.on('connection', function connection(ws) {
     let isAbleToConnect = false;
     setTimeout(() => {
         if(isAbleToConnect == false) ws.close()
-    }, 1000 * 60)
+    }, 1000 * 10)
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
         connectionEmail = object.email
