@@ -78,5 +78,14 @@ module.exports = {
                 })
             })
         })
+    },
+    clearuserbasket: (email) => {
+        return new Promise(function(resolve, reject){
+            // clear user's basket after all products are returned
+            db.query(`UPDATE users SET basket = null WHERE email = ${db.escape(email)}`, function (error, result) { 
+                if (error) throw error;
+                resolve("done")
+            })
+        })
     }
 }

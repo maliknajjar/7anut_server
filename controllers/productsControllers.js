@@ -26,6 +26,12 @@ let controllers = {
             res.json({"message": "done"})
         })
     },
+    clearuserbasket: function(req, res){
+        functions.clearuserbasket(req.body.email)
+        .then((result) => {
+            res.json({"message": "done"})
+        })
+    },
 }
 
 module.exports = controllers;
