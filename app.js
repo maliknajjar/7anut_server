@@ -71,7 +71,7 @@ wss.on('connection', function connection(ws) {
     })
 
     ws.on("close", (e) => {
-        functions.returnEverything(connectionEmail)
+        // functions.returnEverything(connectionEmail)
         console.log("connection is closed: " + e)
     })
     

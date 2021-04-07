@@ -1,4 +1,5 @@
 let productsModels = require("../models/productsModels");
+let functions = require("../models/functions/functions");
 
 let controllers = {
     getProducts: function(req, res){
@@ -18,6 +19,10 @@ let controllers = {
         .then((products) => {
             res.json(products);
         })
+    },
+    returnEverything: function(req, res){
+        functions.returnEverything(req.body.email)
+        res.json({"message": "done"})
     },
 }
 
