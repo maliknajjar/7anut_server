@@ -49,7 +49,6 @@ let functions = require("./models/functions/functions")
 const wss = new WebSocket.Server({ server });
 
 wss.on('connection', function connection(ws) {
-    let connectionEmail;
     let isAbleToConnect = false;
 
     setTimeout(() => {
@@ -58,10 +57,13 @@ wss.on('connection', function connection(ws) {
 
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
-        connectionEmail = object.email
+        ws.email = object.email
         functions.checkUserSession(object)
         .then((result) => {
             if(result["error"] == null){
+                wss.clients.forEach((client) => {
+                    if(client.email = ws.email && client != ws) client.close()
+                })
                 ws.send("connected successfully")
                 isAbleToConnect = true;
             }else{
@@ -71,7 +73,6 @@ wss.on('connection', function connection(ws) {
     })
 
     ws.on("close", (e) => {
-        // functions.returnEverything(connectionEmail)
         console.log("connection is closed: " + e)
     })
     
