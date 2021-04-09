@@ -83,6 +83,7 @@ module.exports = {
                 }
                 // clear user's basket after all products are returned
                 clearuserbasket(email)
+                resolve("done")
             })
         })
     },
