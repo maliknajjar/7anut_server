@@ -100,6 +100,6 @@ setInterval(function ping() {
         ws.isAlive = false;
         ws.ping()
     });
-}, 30000);
+}, 60000 * 60);
 
 module.exports = server;
