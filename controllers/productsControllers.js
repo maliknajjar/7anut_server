@@ -21,10 +21,11 @@ let controllers = {
         })
     },
     returneverything: function(req, res){
-        theFunctions.returneverything(req.body.email)
-        .then((result) => {
-            res.json({"message": "done"})
-        })
+        // theFunctions.returneverything(req.body.email)
+        // .then((result) => {
+        //     res.json({"message": "done"})
+        // })
+        console.log("test")
     },
     clearuserbasket: function(req, res){
         theFunctions.clearuserbasket(req.body.email)
