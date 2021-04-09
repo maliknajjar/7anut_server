@@ -45,7 +45,8 @@ app.use('/api', apiRouter);
 //          websocket          //
 /////////////////////////////////
 let productsModels = require("./models/productsModels")
-let theFunctions = require("./models/functions/functions")
+let theFunctions = require("./models/functions/functions");
+const { WSAEWOULDBLOCK } = require('constants');
 
 const wss = new WebSocket.Server({ server });
 
@@ -97,5 +98,9 @@ wss.on('connection', function connection(ws) {
         console.log("error from server")
     })
 });
+
+wss.on("close", () => {
+    console.log("wss is closed")
+})
 
 module.exports = server;
