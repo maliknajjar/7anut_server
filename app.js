@@ -52,6 +52,7 @@ const wss = new WebSocket.Server({ server });
 wss.on('connection', function connection(ws) {
     let isAbleToConnect = false;
     let isAlive = true;
+    let userEmail;
 
     setTimeout(() => {
         if(isAbleToConnect == false) ws.close()
@@ -60,7 +61,7 @@ wss.on('connection', function connection(ws) {
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
         ws.email = object.email
-        console.log(ws.email)
+        userEmail = object.email
         theFunctions.checkUserSession(object)
         .then((result) => {
             if(result["error"] == null){
@@ -88,8 +89,7 @@ wss.on('connection', function connection(ws) {
 
     ws.on("close", (e) => {
         console.log("connection is closed: " + e)
-        productsModels.returneverything(ws.email)
-        console.log("the email is: " + ws.email)
+        productsModels.returneverything(userEmail)
         clearInterval(interval)
     })
     
