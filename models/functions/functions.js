@@ -69,7 +69,7 @@ module.exports = {
             })
         })
     },
-    returneverything: (email) => {
+    returneverything(email){
         // get products in user's basket
         return new Promise(function(resolve, reject){
             db.query(`SELECT * FROM users WHERE email = ${db.escape(email)}`, function (error, result) { 
