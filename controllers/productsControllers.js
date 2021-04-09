@@ -21,13 +21,13 @@ let controllers = {
         })
     },
     returneverything: function(req, res){
-        theFunctions.returneverything(req.body.email)
+        productsModels.returneverything(req.body.email)
         .then((result) => {
             res.json({"message": "done"})
         })
     },
     clearuserbasket: function(req, res){
-        theFunctions.clearuserbasket(req.body.email)
+        productsModels.clearuserbasket(req.body.email)
         .then((result) => {
             res.json({"message": "done"})
         })

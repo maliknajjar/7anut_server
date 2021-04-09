@@ -24,8 +24,8 @@ router.post('/forgetpassword', usersController.forgetPassword)
 router.post('/changeforgottenPassword', usersController.changeForgottenPassword)
 
 // routes that needs session Authorization and check for ban
-router.use(usersController.CheckIsBanned) // isBanned checker
-router.use(usersController.checkUserSession) // Authorization checker
+// router.use(usersController.CheckIsBanned) // isBanned checker
+// router.use(usersController.checkUserSession) // Authorization checker
 router.post('/checkUserSession', (req, res) => { res.json({"message": "Authorization is correct"})})
 router.post('/editProfile', usersController.editProfile)
 router.post('/addOrder', ordersController.addOrder)

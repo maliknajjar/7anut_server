@@ -60,31 +60,4 @@ module.exports = {
             });
         })
     },
-    clearuserbasket: (email) => {
-        return new Promise(function(resolve, reject){
-            // clear user's basket after all products are returned
-            db.query(`UPDATE users SET basket = null WHERE email = ${db.escape(email)}`, function (error, result) { 
-                if (error) throw error;
-                resolve("done")
-            })
-        })
-    },
-    returneverything(email){
-        // get products in user's basket
-        return new Promise(function(resolve, reject){
-            db.query(`SELECT * FROM users WHERE email = ${db.escape(email)}`, function (error, result) { 
-                if (error) throw error;
-                // return all product the user took to its place with a loop
-                let ordersToReturn = JSON.parse(result[0].basket)
-                for (const key in ordersToReturn) {
-                    db.query(`UPDATE products SET amount = amount + ${db.escape(ordersToReturn[key])} WHERE ID = ${db.escape(key)}`, function (error, result) { 
-                        if (error) throw error;
-                    })
-                }
-                // clear user's basket after all products are returned
-                clearuserbasket(email)
-                resolve("done")
-            })
-        })
-    },
 }

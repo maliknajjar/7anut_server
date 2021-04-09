@@ -44,7 +44,7 @@ app.use('/api', apiRouter);
 /////////////////////////////////
 //          websocket          //
 /////////////////////////////////
-let theFunctions = require("./models/functions/functions")
+let productsModels = require("./models/productsModels")
 
 const wss = new WebSocket.Server({ server });
 
@@ -59,7 +59,7 @@ wss.on('connection', function connection(ws) {
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
         ws.email = object.email
-        theFunctions.checkUserSession(object)
+        productsModels.checkUserSession(object)
         .then((result) => {
             if(result["error"] == null){
                 wss.clients.forEach((client) => {
@@ -86,7 +86,7 @@ wss.on('connection', function connection(ws) {
 
     ws.on("close", (e) => {
         console.log("connection is closed: " + e)
-        theFunctions.returneverything(ws.email)
+        productsModels.returneverything(ws.email)
         console.log("the email is: " + ws.email)
         clearInterval(interval)
     })
