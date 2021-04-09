@@ -56,10 +56,6 @@ wss.on('connection', function connection(ws) {
         if(isAbleToConnect == false) ws.close()
     }, 1000 * 20)
 
-    let interval = setInterval(() => {
-        
-    }, 1000 * 30)
-
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
         ws.email = object.email
@@ -77,14 +73,21 @@ wss.on('connection', function connection(ws) {
         })
     })
 
+    let interval = setInterval(() => {
+        if(isAlive == false) ws.terminate()
+        isAlive = false;
+        ws.ping()
+    }, 1000 * 30)
+
     ws.on('pong', (e) => {
         console.log("recieved pong")
+        isAlive = true;
     });
 
     ws.on("close", (e) => {
         console.log("connection is closed: " + e)
         functions.returnEverything(ws.email)
-        // clearInterval(interval)
+        clearInterval(interval)
     })
     
     ws.on("error", () => {
