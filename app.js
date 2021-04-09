@@ -45,6 +45,7 @@ app.use('/api', apiRouter);
 //          websocket          //
 /////////////////////////////////
 let productsModels = require("./models/productsModels")
+let theFunctions = require("./models/functions/functions")
 
 const wss = new WebSocket.Server({ server });
 
@@ -59,7 +60,7 @@ wss.on('connection', function connection(ws) {
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
         ws.email = object.email
-        productsModels.checkUserSession(object)
+        theFunctions.checkUserSession(object)
         .then((result) => {
             if(result["error"] == null){
                 wss.clients.forEach((client) => {
