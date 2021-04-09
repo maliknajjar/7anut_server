@@ -1,6 +1,7 @@
 let db = require("../../db");
 let generator = require('generate-password');
 let moment = require('moment');
+const { clearuserbasket } = require("../../controllers/productsControllers");
 
 // define the maximum age of session's validity
 let sessionAgeInHours = process.env.APPUSERSESSIONEXP; 
@@ -59,6 +60,15 @@ module.exports = {
             });
         })
     },
+    clearuserbasket: (email) => {
+        return new Promise(function(resolve, reject){
+            // clear user's basket after all products are returned
+            db.query(`UPDATE users SET basket = null WHERE email = ${db.escape(email)}`, function (error, result) { 
+                if (error) throw error;
+                resolve("done")
+            })
+        })
+    },
     returnEverything: (email) => {
         // get products in user's basket
         return new Promise(function(resolve, reject){
@@ -72,17 +82,8 @@ module.exports = {
                     })
                 }
                 // clear user's basket after all products are returned
-                clearuserbasket()
+                clearuserbasket(email)
             })
         })
     },
-    clearuserbasket: (email) => {
-        return new Promise(function(resolve, reject){
-            // clear user's basket after all products are returned
-            db.query(`UPDATE users SET basket = null WHERE email = ${db.escape(email)}`, function (error, result) { 
-                if (error) throw error;
-                resolve("done")
-            })
-        })
-    }
 }
