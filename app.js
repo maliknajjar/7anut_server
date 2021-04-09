@@ -59,7 +59,7 @@ wss.on('connection', function connection(ws) {
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
         ws.email = object.email
-        functions.checkUserSession(object)
+        theFunctions.checkUserSession(object)
         .then((result) => {
             if(result["error"] == null){
                 wss.clients.forEach((client) => {
