@@ -62,7 +62,7 @@ let models = {
                     })
                 }
                 // clear user's basket after all products are returned
-                clearuserbasket(email)
+                models.clearuserbasket(email)
                 resolve("done")
             })
         })
