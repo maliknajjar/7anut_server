@@ -86,7 +86,7 @@ wss.on('connection', function connection(ws) {
 
     ws.on("close", (e) => {
         console.log("connection is closed: " + e)
-        // functions.returnEverything(ws.email)
+        functions.returnEverything(ws.email)
         console.log("the email is: " + ws.email)
         clearInterval(interval)
     })
