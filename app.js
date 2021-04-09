@@ -77,12 +77,12 @@ wss.on('connection', function connection(ws) {
     })
 
     ws.on('pong', (e) => {
-        console.log("client is still alive")
+        // console.log("client is still alive")
         ws.isAlive = true;
     });
 
     ws.on("close", (e) => {
-        console.log("connection is closed: " + e)
+        // console.log("connection is closed: " + e)
         productsModels.returneverything(userEmail)
     })
     
@@ -94,7 +94,7 @@ wss.on('connection', function connection(ws) {
 setInterval(function ping() {
     wss.clients.forEach(function each(ws) {
         if(ws.isAlive == false){
-            console.log("client is dead")
+            // console.log("client is dead")
             return ws.terminate()
         }
         ws.isAlive = false;
