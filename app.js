@@ -50,10 +50,15 @@ const wss = new WebSocket.Server({ server });
 
 wss.on('connection', function connection(ws) {
     let isAbleToConnect = false;
+    let isAlive = true;
 
     setTimeout(() => {
         if(isAbleToConnect == false) ws.close()
     }, 1000 * 20)
+
+    let interval = setInterval(() => {
+        
+    }, 1000 * 30)
 
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
@@ -72,8 +77,14 @@ wss.on('connection', function connection(ws) {
         })
     })
 
+    ws.on('pong', (e) => {
+        console.log("recieved pong")
+    });
+
     ws.on("close", (e) => {
         console.log("connection is closed: " + e)
+        functions.returnEverything(ws.email)
+        // clearInterval(interval)
     })
     
     ws.on("error", () => {
