@@ -59,8 +59,8 @@ wss.on('connection', function connection(ws) {
 
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
-        console.log(object)
         ws.email = object.email
+        console.log(ws.email)
         theFunctions.checkUserSession(object)
         .then((result) => {
             if(result["error"] == null){
