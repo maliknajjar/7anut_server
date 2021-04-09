@@ -1,5 +1,5 @@
 let productsModels = require("../models/productsModels");
-let functions = require("../models/functions/functions");
+let theFunctions = require("../models/functions/functions");
 
 let controllers = {
     getProducts: function(req, res){
@@ -21,13 +21,13 @@ let controllers = {
         })
     },
     returneverything: function(req, res){
-        functions.returneverything(req.body.email)
+        theFunctions.returneverything(req.body.email)
         .then((result) => {
             res.json({"message": "done"})
         })
     },
     clearuserbasket: function(req, res){
-        functions.clearuserbasket(req.body.email)
+        theFunctions.clearuserbasket(req.body.email)
         .then((result) => {
             res.json({"message": "done"})
         })

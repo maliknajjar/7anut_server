@@ -44,7 +44,7 @@ app.use('/api', apiRouter);
 /////////////////////////////////
 //          websocket          //
 /////////////////////////////////
-let functions = require("./models/functions/functions")
+let theFunctions = require("./models/functions/functions")
 
 const wss = new WebSocket.Server({ server });
 
@@ -86,7 +86,7 @@ wss.on('connection', function connection(ws) {
 
     ws.on("close", (e) => {
         console.log("connection is closed: " + e)
-        functions.returneverything(ws.email)
+        theFunctions.returneverything(ws.email)
         console.log("the email is: " + ws.email)
         clearInterval(interval)
     })
