@@ -73,6 +73,7 @@ module.exports = {
                 }
                 // clear user's basket after all products are returned
                 clearuserbasket()
+                console.log("cleared user basket")
             })
         })
     },
