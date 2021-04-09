@@ -55,7 +55,12 @@ let models = {
             db.query(`SELECT * FROM users WHERE email = ${db.escape(email)}`, function (error, result) { 
                 if (error) throw error;
                 // return all product the user took to its place with a loop
-                let ordersToReturn = JSON.parse(result[0].basket)
+                try {
+                    let ordersToReturn = JSON.parse(result[0].basket)
+                } catch (error) {
+                    resolve("done")
+                    return;
+                }
                 for (const key in ordersToReturn) {
                     db.query(`UPDATE products SET amount = amount + ${db.escape(ordersToReturn[key])} WHERE ID = ${db.escape(key)}`, function (error, result) { 
                         if (error) throw error;

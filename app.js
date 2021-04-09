@@ -46,17 +46,16 @@ app.use('/api', apiRouter);
 /////////////////////////////////
 let productsModels = require("./models/productsModels")
 let theFunctions = require("./models/functions/functions");
-const { WSAEWOULDBLOCK } = require('constants');
 
 const wss = new WebSocket.Server({ server });
 
 wss.on('connection', function connection(ws) {
-    let isAbleToConnect = false;
-    let isAlive = true;
+    let isAuthorized = false;
     let userEmail;
+    ws.isAlive = true;
 
     setTimeout(() => {
-        if(isAbleToConnect == false) ws.close()
+        if(isAuthorized == false) ws.close()
     }, 1000 * 20)
 
     ws.on("message", (msg) => {
@@ -70,28 +69,21 @@ wss.on('connection', function connection(ws) {
                     if(client.email = ws.email && client != ws) client.close()
                 })
                 ws.send("connected successfully")
-                isAbleToConnect = true;
+                isAuthorized = true;
             }else{
                 ws.close()
             }
         })
     })
 
-    let interval = setInterval(() => {
-        if(isAlive == false) ws.terminate()
-        isAlive = false;
-        ws.ping()
-    }, 1000 * 30)
-
     ws.on('pong', (e) => {
-        console.log("recieved pong")
-        isAlive = true;
+        console.log("client is still alive")
+        ws.isAlive = true;
     });
 
     ws.on("close", (e) => {
         console.log("connection is closed: " + e)
         productsModels.returneverything(userEmail)
-        clearInterval(interval)
     })
     
     ws.on("error", () => {
@@ -99,8 +91,15 @@ wss.on('connection', function connection(ws) {
     })
 });
 
-wss.on("close", () => {
-    console.log("wss is closed")
-})
+setInterval(function ping() {
+    wss.clients.forEach(function each(ws) {
+        if(ws.isAlive == false){
+            console.log("client is dead")
+            return ws.terminate()
+        }
+        ws.isAlive = false;
+        ws.ping()
+    });
+}, 60000);
 
 module.exports = server;
