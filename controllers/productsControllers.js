@@ -20,8 +20,8 @@ let controllers = {
             res.json(products);
         })
     },
-    returnEverything: function(req, res){
-        functions.returnEverything(req.body.email)
+    returneverything: function(req, res){
+        functions.returneverything(req.body.email)
         .then((result) => {
             res.json({"message": "done"})
         })
