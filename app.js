@@ -59,6 +59,7 @@ wss.on('connection', function connection(ws) {
     }, 1000 * 20)
     
     ws.on("message", (msg) => {
+        console.log(wss.clients.size)
         let object = JSON.parse(msg)
         ws.email = object.email
         userEmail = object.email
