@@ -60,6 +60,7 @@ wss.on('connection', function connection(ws) {
 
     ws.on("message", (msg) => {
         let object = JSON.parse(msg)
+        console.log(object)
         ws.email = object.email
         userEmail = object.email
         theFunctions.checkUserSession(object)
