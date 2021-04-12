@@ -82,8 +82,8 @@ wss.on('connection', function connection(ws) {
     });
 
     ws.on("close", (e) => {
-        // console.log("connection is closed: " + e)
         productsModels.returneverything(userEmail)
+        console.log("connection is closed: " + e)
     })
     
     ws.on("error", () => {
