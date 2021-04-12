@@ -56,7 +56,6 @@ wss.on('connection', function connection(ws) {
 
     setTimeout(() => {
         if(isAuthorized == false) ws.close()
-        console.log("closed from setimout")
     }, 1000 * 20)
     
     ws.on("message", (msg) => {
@@ -69,38 +68,31 @@ wss.on('connection', function connection(ws) {
                 wss.clients.forEach((client) => {
                     if(client.email = ws.email && client != ws){
                         client.close()
-                        console.log("closed from loop")
                     }
                 })
                 ws.send("connected successfully")
                 isAuthorized = true;
             }else{
                 ws.close()
-                console.log("closed from else")
             }
         })
     })
     
     ws.on('pong', (e) => {
-        // console.log("client is still alive")
         ws.isAlive = true;
     });
     
     ws.on("close", (e) => {
-        // console.log("connection is closed: " + e)
         productsModels.returneverything(userEmail)
     })
     
     ws.on("error", () => {
-        console.log("error from server")
     })
 });
 
 setInterval(function ping() {
     wss.clients.forEach(function each(ws) {
         if(ws.isAlive == false){
-            // console.log("client is dead")
-            console.log("closed from terminate")
             return ws.terminate()
         }
         ws.isAlive = false;
