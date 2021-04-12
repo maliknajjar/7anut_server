@@ -74,6 +74,7 @@ wss.on('connection', function connection(ws) {
                 ws.send("connected successfully")
                 isAuthorized = true;
             }else{
+                ws.send("session is wrong")
                 ws.close()
             }
         })
