@@ -106,8 +106,8 @@ let usersModels = {
                 </head>
                 <body style="display: flex; justify-content: center; align-items: center; padding: 25px; background-color: #fffcdc; height: 100%;">
                     <div class="container" style="max-width: 500px; width: 100%; border-radius: 15px; overflow: hidden;">
-                        <div class="title" style="display: flex; justify-content: center; padding: 15px; background-color: #fff385;"><img style="height: 30px;" src="https://7anut.app/images/logo-01.png" alt=""></div>
-                        <div class="pin" style="background-color: #FFF7AE; padding: 25px; justify-content: center; display: flex; font-size: x-large;">Your pin code is:&nbsp;<span style="font-weight: bold;">${pin}</span></div>
+                        <div class="title" style="justify-content: center; display: flex; justify-content: center; padding: 15px; background-color: #fff385;"><img style="height: 30px;" src="https://7anut.app/images/logo-01.png" alt=""></div>
+                        <div class="pin" style="justify-content: center; background-color: #FFF7AE; padding: 25px; justify-content: center; display: flex; font-size: x-large;">Your pin code is:&nbsp;<span style="font-weight: bold;">${pin}</span></div>
                     </div>
                 </body>
                 <style>
