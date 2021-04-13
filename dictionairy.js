@@ -75,9 +75,9 @@ module.exports = {
         "ar": "انتظر وصول الطلبات"
     },
     "Wait for orders to come des": {
-        "en": "Orders come in the next day or choose any day of the week.",
-        "fr": "Les commandes arrivent le lendemain ou choisissez n'importe quel jour de la semaine.",
-        "ar": "تأتي الطلبات في اليوم التالي او تستطيع اختيار اي يوم من الاسبوع لتأتيك طلباتك"
+        "en": "You can choose to have your orders come in the next day or at the current time",
+        "fr": "Vous pouvez choisir de recevoir vos commandes le lendemain ou à l'heure actuelle",
+        "ar": "تستطيع اختيار ان تأتي طلباتك في اليوم التالي او في الوقت الحالي"
     },
     "Download app": {
         "en": "Download app",
