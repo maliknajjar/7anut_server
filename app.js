@@ -67,7 +67,7 @@ wss.on('connection', function connection(ws) {
         .then((result) => {
             if(result["error"] == null){
                 wss.clients.forEach((client) => {
-                    if(client.email = ws.email && client != ws){
+                    if(client.email == ws.email && client != ws){
                         client.close()
                     }
                 })
@@ -102,4 +102,7 @@ setInterval(function ping() {
     });
 }, 60000 * 60);
 
-module.exports = server;
+module.exports = {
+    "server": server,
+    "wss": wss
+};
