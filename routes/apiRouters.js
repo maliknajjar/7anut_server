@@ -11,7 +11,7 @@ let addressesController = require("../controllers/addressesControllers");
 
 // routes that does not need Authorization
 router.get("/", (req, res) => {res.send("this is the api page")})
-router.get('/minimumversion', (req, res) => {res.send("1.0.2")})        // minimum version can someone use
+router.get('/minimumversion', (req, res) => {res.send("1.0.1")})        // minimum version can someone use
 router.get('/initialcameraposition', (req, res) => {res.json([36.796073, 10.16149, 10])})
 router.get('/fee', propertiesController.getFeePrices)
 router.get('/stores', propertiesController.getCities)
