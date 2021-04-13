@@ -223,6 +223,16 @@ let usersModels = {
                                     resolve({"error": error});
                                     return;
                                 }
+                                // delete all sessions from the database
+                                db.query(`DELETE FROM sessions WHERE email = ${db.escape(object.email)} AND ID NOT IN(${db.escape(object.sessionID)});`, function (error, result) {
+                                    if(error) throw error;
+                                });
+                                // closing any open connection with the same email
+                                require("../app").wss.clients.forEach((client) => {
+                                    if(client.email == object.email && client.sessionID != object.sessionID){
+                                        client.close()
+                                    }
+                                })
                                 resolve({"message": `${object.type} changed successfully`})
                             });
                         })

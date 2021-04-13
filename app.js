@@ -62,6 +62,7 @@ wss.on('connection', function connection(ws) {
         console.log(wss.clients.size)
         let object = JSON.parse(msg)
         ws.email = object.email
+        ws.sessionID = object.sessionID
         userEmail = object.email
         theFunctions.checkUserSession(object)
         .then((result) => {
