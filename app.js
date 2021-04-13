@@ -81,7 +81,7 @@ wss.on('connection', function connection(ws) {
     })
     
     ws.on('pong', (e) => {
-        ws.isAlive = true;
+        ws.isAlive = true; 
     });
     
     ws.on("close", (e) => {
