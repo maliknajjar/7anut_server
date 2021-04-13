@@ -227,7 +227,7 @@ let usersModels = {
                                 db.query(`DELETE FROM sessions WHERE email = ${db.escape(object.email)} AND ID NOT IN(${db.escape(object.sessionID)});`, function (error, result) {
                                     if(error) throw error;
                                 });
-                                resolve({"message": `${object.type} changed successfully`})
+                                resolve({"message": `${object.type} changed successfully`}) 
                             });
                         })
                     })
