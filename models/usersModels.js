@@ -96,6 +96,38 @@ let usersModels = {
                 }
                 // generate password
                 let pin = generator.generate({length: 6, numbers: true});
+                let html = `<!DOCTYPE html>
+                <html lang="en" style="height: 100%;">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Document</title>
+                </head>
+                <body style="display: flex; justify-content: center; align-items: center; padding: 25px; background-color: #fffcdc; height: 100%;">
+                    <div class="container" style="max-width: 500px; width: 100%; border-radius: 15px; overflow: hidden;">
+                        <div class="title" style="display: flex; justify-content: center; padding: 15px; background-color: #fff385;"><img style="height: 30px;" src="https://7anut.app/images/logo-01.png" alt=""></div>
+                        <div class="pin" style="background-color: #FFF7AE; padding: 25px; justify-content: center; display: flex; font-size: x-large;">Your pin code is:&nbsp;<span style="font-weight: bold;">${pin}</span></div>
+                    </div>
+                </body>
+                <style>
+                    *{
+                        box-sizing: border-box;
+                    }
+                    .title{
+                        position: relative;
+                        box-shadow: 2px 1px 22px -2px rgba(0,0,0,0.19);
+                        -webkit-box-shadow: 2px 1px 22px -2px rgba(0,0,0,0.19);
+                        -moz-box-shadow: 2px 1px 22px -2px rgba(0,0,0,0.19);
+                    }
+                    .container{
+                        position: relative;
+                        box-shadow: 2px 1px 30px -5px rgba(0,0,0,0.25);
+                        -webkit-box-shadow: 2px 1px 30px -5px rgba(0,0,0,0.25);
+                        -moz-box-shadow: 2px 1px 30px -5px rgba(0,0,0,0.25);
+                    }
+                </style>
+                </html>`
                 let timeout = moment().utc(1).add(15, "minutes").format('YYYYMMDDHHmm')
                 // add it to the database with a timeoutfield
                 db.query(`UPDATE 7anut.users SET pin = ${db.escape(JSON.stringify({pin: pin, timeout: timeout}))} WHERE (email = ${db.escape(object.email)});`, function (error, result) {
@@ -103,7 +135,7 @@ let usersModels = {
                         resolve({"error": error});
                         return;
                     }
-                    mail(object.email, "email from the app", pin)
+                    mail(object.email, "forgot password pin", html)
                     resolve({"message": "Check your email for pin"})
                 });
             });
