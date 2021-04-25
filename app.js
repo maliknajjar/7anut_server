@@ -108,15 +108,14 @@ setInterval(function ping() {
 /////////////////////////////////////
 process.on('SIGTERM', () => {
     //closing all connections and returning everyproduct to its place
-    index = 0
-    clients = wss.clients.size
+    let index = 0
+    let clients = wss.clients.size
     wss.clients.forEach(function each(ws) {
         index++
         console.log(index)
         ws.terminate()
         if(clients == index) {
             setTimeout(() => {
-                console.log("exited")
                 process.exit(0)
             }, 10000)
         }
