@@ -108,6 +108,7 @@ setInterval(function ping() {
 /////////////////////////////////////
 function clean(){
     console.log("cleaned!!! woooooooooooooooooow")
+    process.exit()
 }
 
 //do something when app is closing
