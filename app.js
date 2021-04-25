@@ -108,7 +108,7 @@ setInterval(function ping() {
 /////////////////////////////////////
 process.on('SIGTERM', () => {
     console.log("cleaned!!! woooooooooooooooooow")
-    process.exit()
+    process.exit(0)
 });
 
 module.exports = {
