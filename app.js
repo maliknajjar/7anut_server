@@ -107,8 +107,18 @@ setInterval(function ping() {
 //          exit clean up          //
 /////////////////////////////////////
 process.on('SIGTERM', () => {
-    console.log("cleaned!!! woooooooooooooooooow")
-    process.exit(0)
+    //closing all connections and returning everyproduct to its place
+    index = 0
+    clients = wss.clients.size
+    wss.clients.forEach(function each(ws) {
+        index++
+        ws.terminate()
+        if(clients == index) {
+            setTimeout(() => {
+                process.exit(0)
+            }, 10000)
+        }
+    });
 });
 
 module.exports = {
