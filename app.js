@@ -108,16 +108,16 @@ setInterval(function ping() {
 /////////////////////////////////////
 
 //do something when app is closing
-process.on('exit', () => {
-    console.log("cleaned the server");
-    process.exit();
-});
-
-// //catches ctrl+c event
-// process.on('SIGINT', () => {
+// process.on('exit', () => {
 //     console.log("cleaned the server");
 //     process.exit();
 // });
+
+// //catches ctrl+c event
+process.on('SIGTERM', () => {
+    console.log("cleaned the server");
+    process.exit();
+});
 
 // // catches "kill pid" (for example: nodemon restart)
 // process.on('SIGUSR1', exitHandler.bind(null, {exit:true}));
