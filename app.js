@@ -103,28 +103,6 @@ setInterval(function ping() {
     });
 }, 60000 * 60);
 
-/////////////////////////////////////
-//          exit clean up          //
-/////////////////////////////////////
-function clean(){
-    console.log("cleaned!!! woooooooooooooooooow")
-    process.exit()
-}
-
-//do something when app is closing
-process.on('exit', clean);
-
-// //catches ctrl+c event
-process.on('SIGINT', clean);
-process.on('SIGTERM', clean);
-
-// // catches "kill pid" (for example: nodemon restart)
-process.on('SIGUSR1', clean);
-process.on('SIGUSR2', clean);
-
-// //catches uncaught exceptions
-process.on('uncaughtException', clean);
-
 module.exports = {
     "server": server,
     "wss": wss
