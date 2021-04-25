@@ -114,7 +114,7 @@ setInterval(function ping() {
 // });
 
 // //catches ctrl+c event
-process.on('SIGTERM', () => {
+process.on('SIGINT', () => {
     console.log("cleaned the server");
     process.exit();
 });
