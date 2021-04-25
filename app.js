@@ -106,25 +106,22 @@ setInterval(function ping() {
 /////////////////////////////////////
 //          exit clean up          //
 /////////////////////////////////////
+function clean(){
+    console.log("cleaned!!! woooooooooooooooooow")
+}
 
 //do something when app is closing
-// process.on('exit', () => {
-//     console.log("cleaned the server");
-//     process.exit();
-// });
+process.on('exit', clean);
 
 // //catches ctrl+c event
-process.on('SIGINT', () => {
-    console.log("cleaned the server");
-    process.exit();
-});
+process.on('SIGINT', clean);
 
 // // catches "kill pid" (for example: nodemon restart)
-// process.on('SIGUSR1', exitHandler.bind(null, {exit:true}));
-// process.on('SIGUSR2', exitHandler.bind(null, {exit:true}));
+process.on('SIGUSR1', clean);
+process.on('SIGUSR2', clean);
 
 // //catches uncaught exceptions
-// process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
+process.on('uncaughtException', clean);
 
 module.exports = {
     "server": server,
