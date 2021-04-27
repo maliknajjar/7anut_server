@@ -108,10 +108,7 @@ setInterval(function ping() {
 /////////////////////////////////////
 process.on('SIGTERM', () => {
     //closing all connections and returning everyproduct to its place
-    let index = 0
-    let clients = wss.clients.size
     wss.clients.forEach(function each(ws) {
-        index++
         ws.terminate()
     });
 });
