@@ -112,13 +112,7 @@ process.on('SIGTERM', () => {
     let clients = wss.clients.size
     wss.clients.forEach(function each(ws) {
         index++
-        console.log(index)
         ws.terminate()
-        if(clients == index) {
-            setTimeout(() => {
-                process.exit(0)
-            }, 10000)
-        }
     });
 });
 
