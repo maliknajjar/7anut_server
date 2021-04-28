@@ -11,7 +11,6 @@ let models = {
     },
     favourite: function(object){
         return new Promise(function(resolve, reject){
-            console.log(object.email)
             db.query(`SELECT * FROM users WHERE email = ${db.escape(object.email)}`, function (error, result) {
                 if (error) throw error;
                 resolve(result)

@@ -33,7 +33,7 @@ let controllers = {
         })
     },
     favourite: function(req, res){
-        productsModels.favourite(req.body.email)
+        productsModels.favourite(req.body)
         .then((result) => {
             res.json(result)
         })
