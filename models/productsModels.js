@@ -9,9 +9,9 @@ let models = {
             });
         })
     },
-    favourite: function(object){
+    addfavourite: function(object){
         return new Promise(function(resolve, reject){
-            db.query(`SELECT * FROM users WHERE email = ${db.escape(object.email)}`, function (error, result) {
+            db.query(`UPDATE users SET favourite = ${db.escape(object.favourite)} WHERE email = ${db.escape(object.email)}`, function (error, result) {
                 if (error) throw error;
                 resolve(result[0].favourite)
             });

@@ -32,8 +32,8 @@ let controllers = {
             res.json({"message": "done"})
         })
     },
-    favourite: function(req, res){
-        productsModels.favourite(req.body)
+    addfavourite: function(req, res){
+        productsModels.addfavourite(req.body)
         .then((result) => {
             res.json(result)
         })
