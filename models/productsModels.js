@@ -11,10 +11,8 @@ let models = {
     },
     takeproduct: function(object){
         return new Promise(function(resolve, reject){
-            object.basket = JSON.stringify(JSON.parse(object.basket)[object.ID] + 1);
             db.query(`SELECT * FROM products WHERE ID = ${db.escape(object.ID)}`, function (error, r) {
                 if (error) throw error;
-                console.log(object.basket)
                 if(JSON.parse(object.basket) != null){
                     if(JSON.parse(object.basket)[object.ID] > r[0].limit_amount_per_user) return resolve({"msg": "reached limit"})
                 }
@@ -35,7 +33,6 @@ let models = {
     },
     leaveproduct: function(object){
         return new Promise(function(resolve, reject){
-            object.basket = JSON.stringify(JSON.parse(object.basket)[object.ID] - 1);
             db.query(`UPDATE products SET amount = amount + 1 WHERE ID = ${db.escape(object.ID)}`, function (error, result){
                 if (error) throw error;
                 // edit user basket also
