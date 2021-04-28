@@ -38,6 +38,12 @@ let controllers = {
             res.json(result)
         })
     },
+    favourite: function(req, res){
+        productsModels.favourite(req.body)
+        .then((result) => {
+            res.json(result)
+        })
+    },
 }
 
 module.exports = controllers;
