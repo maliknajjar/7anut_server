@@ -13,7 +13,7 @@ let models = {
         return new Promise(function(resolve, reject){
             db.query(`SELECT * FROM users WHERE email = ${db.escape(object.email)}`, function (error, result) {
                 if (error) throw error;
-                resolve(result)
+                resolve(result.favourite)
             });
         })
     },
