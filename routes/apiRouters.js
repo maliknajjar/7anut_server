@@ -38,5 +38,6 @@ router.post('/takeproduct', productsController.takeproduct)
 router.post('/leaveproduct', productsController.leaveproduct)
 router.post('/returneverything', productsController.returneverything)
 router.post('/clearuserbasket', productsController.clearuserbasket)
+router.post('/favourite', productsController.favourite)
 
 module.exports = router;

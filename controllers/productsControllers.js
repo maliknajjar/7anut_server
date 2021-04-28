@@ -32,6 +32,12 @@ let controllers = {
             res.json({"message": "done"})
         })
     },
+    favourite: function(req, res){
+        productsModels.favourite(req.body.email)
+        .then((result) => {
+            res.json({"message": "done"})
+        })
+    },
 }
 
 module.exports = controllers;

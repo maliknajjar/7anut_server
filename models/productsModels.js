@@ -9,6 +9,14 @@ let models = {
             });
         })
     },
+    favourite: function(store){
+        return new Promise(function(resolve, reject){
+            db.query(`SELECT * FROM products WHERE store_name = ${db.escape(store)}`, function (error, result) {
+                if (error) throw error;
+                resolve(result)
+            });
+        })
+    },
     takeproduct: function(object){
         return new Promise(function(resolve, reject){
             db.query(`SELECT * FROM products WHERE ID = ${db.escape(object.ID)}`, function (error, r) {
