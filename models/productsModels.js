@@ -16,7 +16,7 @@ let models = {
                 if(JSON.parse(object.basket) != null){
                     if(JSON.parse(object.basket)[object.ID] >= r[0].limit_amount_per_user) return resolve({"msg": "reached limit"})
                 }
-                if (r[0].amount == 0){
+                if (r[0].amount <= 0){
                     resolve({"msg": "product finished"})
                     return;
                 }
