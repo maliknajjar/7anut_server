@@ -21,7 +21,7 @@ let models = {
         return new Promise(function(resolve, reject){
             db.query(`UPDATE users SET favourite = ${db.escape(object.favourite)} WHERE email = ${db.escape(object.email)}`, function (error, result) {
                 if (error) throw error;
-                resolve(result[0].favourite)
+                resolve({"msg": "done changing the favourites"})
             });
         })
     },
