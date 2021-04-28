@@ -15,7 +15,11 @@ let models = {
                 if (error) throw error;
                 db.query(`SELECT * FROM products WHERE ID = ${db.escape(object.ID)}`, function (error, r) {
                     if (error) throw error;
-                    if(ur[0].basket != null) if(JSON.parse(ur[0].basket)[object.ID] > r[0].limit_amount_per_user - 1) return resolve({"msg": "reached limit"})
+                    if(ur[0].basket != null){
+                        console.log(JSON.parse(ur[0].basket)[object.ID])
+                        console.log(r[0].limit_amount_per_user - 1)
+                        if(JSON.parse(ur[0].basket)[object.ID] > r[0].limit_amount_per_user - 1) return resolve({"msg": "reached limit"})
+                    }
                     if (r[0].amount == 0){
                         resolve({"msg": "product finished"})
                         return;
