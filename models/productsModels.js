@@ -11,21 +11,25 @@ let models = {
     },
     takeproduct: function(object){
         return new Promise(function(resolve, reject){
-            db.query(`SELECT * FROM products WHERE ID = ${db.escape(object.ID)}`, function (error, r) {
+            db.query(`SELECT * FROM users WHERE email = ${db.escape(object.email)}`, function (error, ur) {
                 if (error) throw error;
-                if (r[0].amount == 0){
-                    resolve({"msg": "product finished"})
-                    return;
-                }
-                db.query(`UPDATE products SET amount = amount - 1 WHERE ID = ${db.escape(object.ID)}`, function (error, result) {
+                db.query(`SELECT * FROM products WHERE ID = ${db.escape(object.ID)}`, function (error, r) {
                     if (error) throw error;
-                    // edit user basket also
-                    db.query(`UPDATE users SET basket = ${db.escape(object.basket)} WHERE email = ${db.escape(object.email)}`, function (error, theresult) {
+                    if(ur[0].basket[object.ID] > r[0].limit_amount_per_user) return resolve({"msg": "reached limit"})
+                    if (r[0].amount == 0){
+                        resolve({"msg": "product finished"})
+                        return;
+                    }
+                    db.query(`UPDATE products SET amount = amount - 1 WHERE ID = ${db.escape(object.ID)}`, function (error, result) {
                         if (error) throw error;
-                        resolve(theresult)
+                        // edit user basket also
+                        db.query(`UPDATE users SET basket = ${db.escape(object.basket)} WHERE email = ${db.escape(object.email)}`, function (error, theresult) {
+                            if (error) throw error;
+                            resolve(theresult)
+                        });
                     });
                 });
-            });
+            })
         })
     },
     leaveproduct: function(object){
