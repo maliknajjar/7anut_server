@@ -18,8 +18,8 @@ let models = {
                     if(ur[0].basket != null){
                         console.log(ur[0].basket)
                         console.log(r[0].limit_amount_per_user)
-                        console.log(ur[0].basket[object.ID] > r[0].limit_amount_per_user)
-                        if(ur[0].basket[object.ID] > r[0].limit_amount_per_user) return resolve({"msg": "reached limit"})
+                        console.log(parseInt(ur[0].basket[object.ID]) > parseInt(r[0].limit_amount_per_user))
+                        if(parseInt(ur[0].basket[object.ID]) > parseInt(r[0].limit_amount_per_user)) return resolve({"msg": "reached limit"})
                     }
                     if (r[0].amount == 0){
                         resolve({"msg": "product finished"})
