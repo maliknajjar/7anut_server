@@ -10,7 +10,6 @@ let models = {
         })
     },
     takeproduct: function(object){
-        console.log(object.basket)
         return new Promise(function(resolve, reject){
             db.query(`SELECT * FROM products WHERE ID = ${db.escape(object.ID)}`, function (error, r) {
                 if (error) throw error;
@@ -22,7 +21,6 @@ let models = {
                 db.query(`UPDATE products SET amount = amount - 1 WHERE ID = ${db.escape(object.ID)}`, function (error, result) {
                     if (error) throw error;
                     // edit user basket also
-                    console.log(object.basket)
                     db.query(`UPDATE users SET basket = ${db.escape(object.basket)} WHERE email = ${db.escape(object.email)}`, function (error, theresult) {
                         if (error) throw error;
                         resolve(theresult)
