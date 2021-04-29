@@ -25,6 +25,14 @@ let models = {
             });
         })
     },
+    edituseraddress: function(object){
+        return new Promise(function(resolve, reject){
+            db.query(`UPDATE addresses SET addresse = ${db.escape(object.address)} WHERE ID = ${db.escape(object.addressID)} AND userEmail = ${db.escape(object.email)}`, function (error, result) {
+                if (error) throw error;
+                resolve(result)
+            });
+        })
+    },
     swapuseraddresses: function(object){
         return new Promise(function(resolve, reject){
             if(object.top == object.bottom){

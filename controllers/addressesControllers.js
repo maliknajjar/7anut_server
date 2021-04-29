@@ -20,6 +20,12 @@ let controllers = {
             res.json(result);
         })
     },
+    edituseraddress: function(req, res){
+        addressesModel.edituseraddress(req.body)
+        .then((result) => {
+            res.json(result);
+        })
+    },
     swapuseraddresses: function(req, res){
         addressesModel.swapuseraddresses(req.body)
         .then((result) => {
