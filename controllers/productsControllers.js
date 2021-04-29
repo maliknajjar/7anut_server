@@ -41,7 +41,7 @@ let controllers = {
     favourite: function(req, res){
         productsModels.favourite(req.body)
         .then((result) => {
-            res.json(result)
+            res.send(result)
         })
     },
 }
