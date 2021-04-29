@@ -38,7 +38,7 @@ let usersModels = {
             }
             // hasing the password
             bcrypt.hash(object.password, 10).then(function(hash) {
-                db.query(`INSERT INTO 7anut.users (email, fullName, password, phoneNumber) VALUES (${db.escape(object.email)}, ${db.escape(object.fullName)}, ${db.escape(hash)}, ${db.escape(object.phoneNumber)})`, (error, result) => {
+                db.query(`INSERT INTO 7anut.users (email, fullName, password, phoneNumber, favourite) VALUES (${db.escape(object.email)}, ${db.escape(object.fullName)}, ${db.escape(hash)}, ${db.escape(object.phoneNumber)}, "")`, (error, result) => {
                     if (error){
                         resolve({"error": error.code});
                         return;
