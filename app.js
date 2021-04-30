@@ -59,7 +59,6 @@ wss.on('connection', function connection(ws) {
     }, 1000 * 20)
     
     ws.on("message", (msg) => {
-        console.log(wss.clients.size)
         let object = JSON.parse(msg)
         ws.email = object.email
         ws.sessionID = object.sessionID
@@ -87,6 +86,7 @@ wss.on('connection', function connection(ws) {
     
     ws.on("close", (e) => {
         productsModels.returneverything(userEmail)
+        console.log(e)
     })
     
     ws.on("error", () => {
