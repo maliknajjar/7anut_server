@@ -50,8 +50,8 @@ let models = {
         })
     },
     getAllOrders: function(object){
-        let sql = `Select orders.ID, orders.orderID, orders.status, orders.userEmail, orders.orders, orders.transportFee, orders.totalPrice, orders.address, orders.paymentType, orders.orderTime, orders.recieveDate, users.phoneNumber, users.isReal from orders inner join users on orders.userEmail = users.email WHERE JSON_VALUE(status, '$.status') LIKE ${db.escape(object.status ? object.status : "Pending")} order by recieveDate desc;`
-        let sql2 = `Select orders.ID, orders.orderID, orders.status, orders.userEmail, orders.orders, orders.transportFee, orders.totalPrice, orders.address, orders.paymentType, orders.orderTime, orders.recieveDate, users.phoneNumber, users.isReal from orders inner join users on orders.userEmail = users.email order by recieveDate desc;`
+        let sql = `Select orders.ID, orders.orderID, orders.status, orders.userEmail, orders.orders, orders.transportFee, orders.totalPrice, orders.address, orders.paymentType, orders.orderTime, orders.recieveDate, users.phoneNumber, users.isReal from orders inner join users on orders.userEmail = users.email WHERE JSON_VALUE(status, '$.status') LIKE ${db.escape(object.status ? object.status : "Pending")} order by recieveDate desc LIMIT 50`
+        let sql2 = `Select orders.ID, orders.orderID, orders.status, orders.userEmail, orders.orders, orders.transportFee, orders.totalPrice, orders.address, orders.paymentType, orders.orderTime, orders.recieveDate, users.phoneNumber, users.isReal from orders inner join users on orders.userEmail = users.email order by recieveDate desc LIMIT 50`
         return new Promise(function(resolve, reject){
             db.query(object.status == "All" ? sql2 : sql, (error, result) => {
                 if (error){
