@@ -16,7 +16,7 @@ module.exports = {
             let expireDate = moment().utc(1).add(sessionAgeInHours, "hours").format('YYYYMMDDHH');
             db.query(`SELECT * FROM sessions WHERE email = ${db.escape(email)} AND device_id = ${db.escape(deviceID)}`, function (error, result) {
                 if(result[0] != null){
-                    db.query(`UPDATE 7anut.sessions SET ID = ${db.escape(sessionID)}, expire_date = ${db.escape(expireDate)} WHERE (device_id = ${db.escape(deviceID)})`, (error, result) => {
+                    db.query(`UPDATE 7anut.sessions SET ID = ${db.escape(sessionID)}, expire_date = ${db.escape(expireDate)} WHERE device_id = ${db.escape(deviceID)} AND email = ${db.escape(email)}`, (error, result) => {
                         if(error) throw error;
                         resolve(sessionID);
                     })

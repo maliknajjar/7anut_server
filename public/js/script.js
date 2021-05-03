@@ -38,8 +38,8 @@ activate.forEach((e) => {
         fetch('/admin/activate', {
             method: 'POST',
             headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({email: email})
         }).then((result) => {
