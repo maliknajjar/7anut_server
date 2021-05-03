@@ -86,6 +86,7 @@ wss.on('connection', function connection(ws) {
     
     ws.on("close", (e) => {
         productsModels.returneverything(userEmail)
+        print("a user just close a connection");
         console.log(e)
     })
     
