@@ -49,40 +49,6 @@ let models = {
             })
         })
     },
-    getAllOrders: function(object){
-        let sql = `Select orders.ID, orders.orderID, orders.status, orders.userEmail, users.fullName, orders.orders, orders.transportFee, orders.totalPrice, orders.address, orders.paymentType, orders.orderTime, orders.recieveDate, users.phoneNumber, users.isReal from orders inner join users on orders.userEmail = users.email WHERE JSON_VALUE(status, '$.status') LIKE ${db.escape(object.status ? object.status : "Pending")} order by recieveDate desc LIMIT 50`
-        let sql2 = `Select orders.ID, orders.orderID, orders.status, orders.userEmail, users.fullName, orders.orders, orders.transportFee, orders.totalPrice, orders.address, orders.paymentType, orders.orderTime, orders.recieveDate, users.phoneNumber, users.isReal from orders inner join users on orders.userEmail = users.email order by recieveDate desc LIMIT 50`
-        return new Promise(function(resolve, reject){
-            db.query(object.status == "All" ? sql2 : sql, (error, result) => {
-                if (error){
-                    resolve({"error": error});
-                    return;
-                }
-                resolve(result);
-            })
-        })
-    },
-    changeOrdersStatus: function(object){
-        return new Promise(function(resolve, reject){
-            let sql = "";
-            if (object.ID == null){
-                resolve({"error": "no order selected"})
-                return
-            }
-            if (Array.isArray(object.ID)){
-                sql = `UPDATE orders SET status = ${db.escape(object["status"])} WHERE ID IN (${db.escape(object.ID)});`
-            }else{
-                sql = `UPDATE orders SET status = ${db.escape(object["status"])} WHERE ID = ${db.escape(object.ID)};`
-            }
-            db.query(sql, (error, result) => {
-                if (error){
-                    resolve({"error": error});
-                    return;
-                }
-                resolve({"message": "orders status changed"});
-            })
-        })
-    },
 }
 
 module.exports = models;
