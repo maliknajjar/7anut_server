@@ -111,6 +111,7 @@ process.on('SIGTERM', () => {
     //closing all connections and returning everyproduct to its place
     wss.clients.forEach(function each(ws) {
         ws.terminate()
+        console.log("terminated a connection")
     });
 });
 
