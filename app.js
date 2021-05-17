@@ -86,8 +86,6 @@ wss.on('connection', function connection(ws) {
     
     ws.on("close", (e) => {
         productsModels.returneverything(userEmail)
-        console.log("a user just close a connection");
-        console.log(e)
     })
     
     ws.on("error", () => {
@@ -111,7 +109,7 @@ process.on('SIGTERM', () => {
     //closing all connections and returning everyproduct to its place
     wss.clients.forEach(function each(ws) {
         ws.terminate()
-        console.log("terminated a connection")
+        console.log("terminated a connection before stopping the server")
     });
 });
 
